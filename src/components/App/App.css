@@ -1,0 +1,8 @@
+.app {
+    margin: 0 auto;
+    max-width: 1280px;
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

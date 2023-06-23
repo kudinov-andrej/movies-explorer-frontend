@@ -1,0 +1,184 @@
+.header__navigation {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-left: 42px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .header__navigation {
+        max-width: 40px;
+    }
+}
+
+.header__navigation-no-login {
+    max-width: 175px;
+}
+
+.header__link-container {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header__link-container {
+        display: none;
+    }
+}
+
+.header__link-container-off {
+    display: none;
+}
+
+.header__button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 77px;
+    height: 32px;
+    color: #000;
+    transition: background 0.3s ease;
+    align-items: center;
+    background: none;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.header__button:hover {
+    border-radius: 3px;
+    background: #3456F3;
+    color: white;
+    cursor: pointer;
+}
+
+.header__button-mobile {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: transparent;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-image: url('../../images/menuIcon.svg');
+    width: 40px;
+    height: 43px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header__button-mobile {
+        display: flex;
+    }
+}
+
+.header__button-container {
+    margin: 0;
+    padding: 0;
+    margin-right: 70px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header__button-container {
+        display: none;
+    }
+}
+
+.header__link-punkt {
+    margin: 0;
+    padding: 0;
+    margin-right: 16px;
+
+}
+
+.header__link-punkt-of {
+    display: none;
+}
+
+.header__link-punkt:last-child {
+    margin-right: 0;
+}
+
+.header__link {
+    max-width: 142px;
+    text-decoration: none;
+    color: #000;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Inter;
+    line-height: 18px;
+}
+
+.header__link_active {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 4px;
+}
+
+
+.header__button_tupy_accaunt {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 77px;
+    height: 32px;
+    color: #000;
+    transition: background 0.3s ease;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+}
+
+.header__button_tupy_accaunt:hover {
+    border-radius: 3px;
+    background: #3456F3;
+    color: white;
+    cursor: pointer;
+}
+
+.button__text {
+    margin: 0;
+    padding: 0;
+    margin-left: 1px;
+    margin-right: 17px;
+    max-width: 57px;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.button__img {
+    margin: 0;
+    padding: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    width: 11px;
+    height: 14px;
+    padding: 8px;
+    border-radius: 4px;
+    background: #F4F4F4
+}
