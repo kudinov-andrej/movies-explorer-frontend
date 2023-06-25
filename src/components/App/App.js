@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
-import ProjectTitle from '../ProjectTitle/ProjectTitle';
 import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
 
 function App() {
 
@@ -23,8 +24,9 @@ function App() {
         islogin={islogin}
       />
       <main className='content'>
-        <ProjectTitle />
         <Promo />
+        <AboutProject />
+        <Techs />
       </main>
     </body >
   );
