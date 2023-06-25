@@ -1,0 +1,130 @@
+.portfolio {
+    margin: 0;
+    padding: 0;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 125px;
+    color: #A0A0A0;
+    font-size: 18px;
+    font-family: Inter;
+    line-height: 20px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio {
+        margin-top: 90px;
+        margin-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .portfolio {
+        margin-right: 4px;
+        margin-left: 4px;
+        margin-top: 70px;
+    }
+}
+
+.portfolio__title {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 23px;
+    color: #000;
+    font-size: 22px;
+    font-family: Inter;
+    letter-spacing: -0.88px;
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
+.portfolio__navigation {
+    border-top: black 1px solid;
+}
+
+
+
+.portfolio__conteiner {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style-type: none;
+
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__conteiner {
+        margin-bottom: 90px;
+
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .portfolio__conteiner {
+        flex-direction: column-reverse;
+        margin-bottom: 70px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.portfolio__link-punkt {
+    width: 100%;
+}
+
+.portfolio__link {
+    width: 100%;
+    text-decoration: none;
+}
+
+.portfolio__button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    border-bottom: #E8E8E8 solid 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transition: scale 0.9s ease;
+}
+
+.portfolio__button:hover {
+    border-radius: 3px;
+    scale: 1.01;
+    color: white;
+    cursor: pointer;
+}
+
+
+.button__text {
+    margin: 0;
+    padding: 0;
+    min-width: 60%;
+    max-width: 880px;
+    text-align: start;
+    font-size: 30px;
+    font-family: Inter;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+    color: #000;
+}
+
+.button__arrow {
+    margin: 0;
+    padding: 0;
+    min-width: 10%;
+    text-align: end;
+    color: #000;
+    font-size: 30px;
+    font-family: Inter;
+    line-height: 60px;
+    letter-spacing: -1.2px;
+
+}
