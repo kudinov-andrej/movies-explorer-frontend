@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import ProjectTitle from '../ProjectTitle/ProjectTitle';
+import Promo from '../Promo/Promo';
 
 function App() {
 
@@ -23,8 +24,9 @@ function App() {
       />
       <main className='content'>
         <ProjectTitle />
+        <Promo />
       </main>
-    </body>
+    </body >
   );
 }
 

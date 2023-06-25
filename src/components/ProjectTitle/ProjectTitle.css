@@ -84,6 +84,7 @@
     padding: 0;
     width: 96px;
     height: 36px;
+    border: none;
     border-radius: 10px;
     background: #E8E8E8;
     color: #000;
@@ -91,6 +92,14 @@
     font-family: Inter;
     font-weight: 500;
     line-height: 16px;
+    transition: background 0.3s ease;
+}
+
+
+.project-title__button:hover {
+    background: #3456F3;
+    color: white;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
