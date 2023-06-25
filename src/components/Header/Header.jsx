@@ -8,7 +8,7 @@ function Header(props) {
 
 
     return (
-        <body className="app">
+        <>
             <header className='header'>
                 <img className="header__logo" src={Logo} alt='логотип сайта'></img>
                 <Navigation
@@ -21,7 +21,7 @@ function Header(props) {
                 isOpenPopapNavBar={props.isOpenPopapNavBar}
                 handleСhangePopapNavBar={props.handleСhangePopapNavBar}
             />
-        </body>
+        </>
     );
 }
 
