@@ -39,6 +39,47 @@
     display: none;
 }
 
+.header__button-container {
+    margin: 0;
+    padding: 0;
+    margin-right: 70px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header__button-container {
+        display: none;
+    }
+}
+
+.header__button-container-on {
+    margin: 0;
+    padding: 0;
+    margin-right: 70px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header__button-container-on {
+        margin-right: 14px;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__button-container-on {
+        margin-right: 0;
+
+    }
+}
+
+
 .header__button {
     margin: 0;
     padding: 0;
@@ -53,6 +94,26 @@
     font-family: Inter;
     font-weight: 500;
     line-height: 16px;
+}
+
+.header__button:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .header__button {
+        width: 76px;
+
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__button {
+        width: 54px;
+        height: 26px;
+        text-align: center;
+        font-size: 10px;
+    }
 }
 
 .header__button:hover {
@@ -83,7 +144,7 @@
 @media screen and (max-width: 768px) {
     .header__button-mobile {
         margin-right: 14px;
-        display: flex;
+        display: block;
     }
 }
 
@@ -93,22 +154,11 @@
     }
 }
 
-
-.header__button-container {
-    margin: 0;
-    padding: 0;
-    margin-right: 70px;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-
+.header__button-mobile-off {
+    display: none;
 }
 
-@media screen and (max-width: 768px) {
-    .header__button-container {
-        display: none;
-    }
-}
+
 
 .header__link-punkt {
     margin: 0;

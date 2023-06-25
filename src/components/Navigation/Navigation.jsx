@@ -13,8 +13,8 @@ function Navigation(props) {
                 <li className='header__link-punkt'><NavLink className={({ isActive }) => `header__link ${isActive ? "header__link_active" : ""}`} to="/movies">Фильмы</NavLink></li>
                 <li className='header__link-punkt'><NavLink className={({ isActive }) => `header__link ${isActive ? "header__link_active" : ""}`} to="/saved-movies">Сохраненные фильмы</NavLink></li>
             </ul>
-            <button className='header__button-mobile' onClick={props.handleСhangePopapNavBar} ></button>
-            <ul className='header__button-container'>
+            <button className={props.islogin ? 'header__button-mobile' : 'header__button-mobile-off'} onClick={props.handleСhangePopapNavBar} ></button>
+            <ul className={props.islogin ? 'header__button-container' : 'header__button-container header__button-container-on'}>
                 <li className={props.islogin ? 'header__link-punkt-of' : 'header__link-punkt'}><NavLink className='header__link' to="/signup"><button className='header__button'>Регистрация</button></NavLink></li>
                 <li className={props.islogin ? 'header__link-punkt-of' : 'header__link-punkt'}><NavLink className='header__link' to="/signin"><button className='header__button'>Войти</button></NavLink></li>
                 <li className={props.islogin ? 'header__link-punkt' : 'header__link-punkt-of'}><NavLink className='header__link' to="/profile"><button className='header__button header__button_tupy_accaunt'>
