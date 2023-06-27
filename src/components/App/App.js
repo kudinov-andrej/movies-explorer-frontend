@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     setIsopenPopapNavBar(!isOpenPopapNavBar)
   }
 
+  const currentYear = new Date().getFullYear();
 
   return (
     <body className="app">
@@ -22,6 +24,7 @@ function App() {
         islogin={islogin}
       />
       <Main />
+      <Footer />
     </body >
   );
 }
