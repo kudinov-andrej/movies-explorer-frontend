@@ -10,11 +10,15 @@ function App() {
 
   const [islogin, setIslogin] = useState(true);
 
+  // открытие модального окна
+
   const [isOpenPopapNavBar, setIsopenPopapNavBar] = useState(false);
 
   function handleСhangePopapNavBar() {
     setIsopenPopapNavBar(!isOpenPopapNavBar)
   }
+
+  // скролл в блоке main
 
   const scrollToSection = (section) => {
     scroller.scrollTo(section, {
