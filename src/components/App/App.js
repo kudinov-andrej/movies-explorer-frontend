@@ -5,6 +5,9 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+
 
 function App() {
 
@@ -27,6 +30,12 @@ function App() {
       smooth: 'easeInOutQuart'
     });
   }
+  // временный код для отрисовки карточек
+
+  const CARDS_AMOUNT = 12;
+  const CARDS_AMOUNT_TWO = 4;
+  const cards = Array(CARDS_AMOUNT).fill(null);
+  const likeCards = Array(CARDS_AMOUNT_TWO).fill(null);
 
   return (
     <body className="app">
@@ -43,16 +52,16 @@ function App() {
         />
         <Route path="/movies"
           element={
-            <section className='movies'>
-              здесь будет поиск фильмов
-            </section>
+            <Movies
+              cards={cards}
+            />
           }
         />
         <Route path="/saved-movies"
           element={
-            <section className='movies'>
-              здесь будут сохраненные фильмы
-            </section>
+            <SavedMovies
+              cards={likeCards}
+            />
           }
         />
       </Routes>

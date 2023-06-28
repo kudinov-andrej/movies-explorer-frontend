@@ -1,0 +1,83 @@
+.movies-card {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 339px;
+    height: 262px;
+    border-radius: 6px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.movies-card__image {
+    margin: 0;
+    padding: 0;
+    max-width: 339px;
+    height: 190px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movies-card__content {
+    margin: 0;
+    padding: 0;
+    margin-left: 14px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.movies-card__name {
+    margin: 0;
+    padding: 0;
+    max-width: 260px;
+    margin-top: 14px;
+    color: #000;
+    font-size: 13px;
+    font-family: Inter;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+
+.movies-card__hard {
+    margin: 0;
+    padding: 0;
+    background-image: url(../../images/hard.svg);
+    margin-top: 8px;
+    margin-right: 14px;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    border: none;
+    transition: scale 0.5s ease;
+}
+
+.movies-card__hard:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+
+.movies-card__hard_active {
+    background: url(../../images/hardActiv.svg);
+}
+
+.movies-card__hard_active:hover {
+    background: url(../../images/hardDelete.svg);
+}
+
+.movies-card__duration {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 14px;
+    margin-left: 14px;
+    text-align: start;
+    color: #A0A0A0;
+    font-size: 11px;
+    font-family: Inter;
+    max-width: 150px;
+}

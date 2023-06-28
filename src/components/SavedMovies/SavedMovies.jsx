@@ -1,9 +1,9 @@
 import React from 'react';
-import './Movies.css';
+import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies(props) {
+function SavedMovies(props) {
 
     return (
         <section className='movies'>
@@ -16,4 +16,4 @@ function Movies(props) {
     );
 }
 
-export default Movies;
+export default SavedMovies;
