@@ -6,11 +6,13 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 
-function Main() {
+function Main(props) {
 
     return (
         <main className='content'>
-            <Promo />
+            <Promo
+                scrollToSection={props.scrollToSection}
+            />
             <AboutProject />
             <Techs />
             <AboutMe />

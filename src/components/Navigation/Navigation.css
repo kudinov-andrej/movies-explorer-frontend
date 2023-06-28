@@ -195,15 +195,14 @@
 }
 
 
-.header__button_tupy_accaunt {
+.header__button-accaunt {
     margin: 0;
     padding: 0;
     border: none;
-    width: 77px;
+    width: 100px;
     height: 32px;
     color: #000;
     transition: background 0.3s ease;
-    width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -211,26 +210,26 @@
     background-color: transparent;
 }
 
-.header__button_tupy_accaunt:hover {
+.header__button-accaunt:hover {
     border-radius: 3px;
     background: #3456F3;
     color: white;
     cursor: pointer;
 }
 
-.button__text {
+.button__accaunt-text {
     margin: 0;
     padding: 0;
+    max-width: 57px;
     margin-left: 1px;
     margin-right: 17px;
-    max-width: 57px;
     font-size: 14px;
     font-family: Inter;
     font-weight: 500;
     line-height: 16px;
 }
 
-.button__img {
+.button__accaunt-img {
     margin: 0;
     padding: 0;
     margin-top: 1px;

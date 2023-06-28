@@ -5,7 +5,7 @@ import MyPhoto from '../../images/myPhoto.jpg';
 function AboutMe() {
 
     return (
-        <section className='student'>
+        <section className='student' id='aboutMe'>
             <h2 className='student__title'>Студент</h2>
             <div className='student__conteiner'>
                 <div className='student__text-conteiner'>

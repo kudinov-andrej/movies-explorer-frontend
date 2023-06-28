@@ -17,9 +17,9 @@ function Navigation(props) {
             <ul className={props.islogin ? 'header__button-container' : 'header__button-container header__button-container-on'}>
                 <li className={props.islogin ? 'header__link-punkt-of' : 'header__link-punkt'}><NavLink className='header__link' to="/signup"><button className='header__button'>Регистрация</button></NavLink></li>
                 <li className={props.islogin ? 'header__link-punkt-of' : 'header__link-punkt'}><NavLink className='header__link' to="/signin"><button className='header__button'>Войти</button></NavLink></li>
-                <li className={props.islogin ? 'header__link-punkt' : 'header__link-punkt-of'}><NavLink className='header__link' to="/profile"><button className='header__button header__button_tupy_accaunt'>
-                    <p className='button__text'>Аккаунт</p>
-                    <img className='button__img' src={headerIconMain} alt='изображение человечка'></img>
+                <li className={props.islogin ? 'header__link-punkt' : 'header__link-punkt-of'}><NavLink className='header__link' to="/profile"><button className='header__button-accaunt'>
+                    <p className='button__accaunt-text'>Аккаунт</p>
+                    <img className='button__accaunt-img' src={headerIconMain} alt='изображение человечка'></img>
                 </button></NavLink></li>
             </ul>
         </nav>

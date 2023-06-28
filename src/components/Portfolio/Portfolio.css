@@ -74,6 +74,11 @@
 
 .portfolio__link-punkt {
     width: 100%;
+    border-bottom: #E8E8E8 solid 1px;
+}
+
+.portfolio__link-punkt:last-child {
+    border-bottom: none;
 }
 
 .portfolio__link {
@@ -87,7 +92,6 @@
     background-color: transparent;
     width: 100%;
     border: none;
-    border-bottom: #E8E8E8 solid 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -98,7 +102,6 @@
 .portfolio__button:hover {
     border-radius: 3px;
     scale: 1.01;
-    color: white;
     cursor: pointer;
 }
 

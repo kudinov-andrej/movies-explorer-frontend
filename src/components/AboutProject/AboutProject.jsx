@@ -4,7 +4,7 @@ import './AboutProject.css';
 function AboutProject() {
 
     return (
-        <section className='promo'>
+        <section className='promo' id='aboutProject'>
             <h2 className='promo__title'>О проекте</h2>
             <div className='promo__conteiner'>
                 <div className='promo__item'>
