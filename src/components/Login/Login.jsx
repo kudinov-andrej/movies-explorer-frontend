@@ -15,7 +15,7 @@ function Login() {
                 <fieldset className='login__fieldset'>
                     <div className='login__input-conteiner'>
                         <label className='login__label' for='login__input-email'>E-mail</label>
-                        <input type="email" id="login__input-email" className="login__input" value="potcha@yandex.ru" name="email" required />
+                        <input type="email" id="login__input-email" className="login__input" placeholder='Введите email' name="email" required />
                     </div>
                     <div className='login__input-conteiner'>
                         <label className='login__label' for='login__input-password'>Пароль</label>

@@ -15,11 +15,11 @@ function Register() {
                 <fieldset className='authorization__fieldset'>
                     <div className='authorization__input-conteiner'>
                         <label className='authorization__label' for='authorization__input-name'>Имя</label>
-                        <input type="text" id="authorization__input-name" className="authorization__input" value="Василий" name="name" required minlength="2" maxlength="30" />
+                        <input type="text" id="authorization__input-name" className="authorization__input" placeholder='Введите имя' name="name" required minlength="2" maxlength="30" />
                     </div>
                     <div className='authorization__input-conteiner'>
                         <label className='authorization__label' for='authorization__input-email'>E-mail</label>
-                        <input type="email" id="authorization__input-email" className="authorization__input" value="potcha@yandex.ru" name="email" required />
+                        <input type="email" id="authorization__input-email" className="authorization__input" placeholder='Введите email' name="email" required />
                     </div>
                     <div className='authorization__input-conteiner'>
                         <label className='authorization__label' for='authorization__input-password'>Пароль</label>
