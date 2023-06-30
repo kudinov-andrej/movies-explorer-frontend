@@ -5,19 +5,29 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function Main(props) {
 
     return (
-        <main className='content'>
-            <Promo
-                scrollToSection={props.scrollToSection}
+        <>
+            <Header
+                handleСhangePopapNavBar={props.handleСhangePopapNavBar}
+                isOpenPopapNavBar={props.isOpenPopapNavBar}
+                islogin={props.islogin}
             />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Portfolio />
-        </main>
+            <main className='content'>
+                <Promo
+                    scrollToSection={props.scrollToSection}
+                />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
+            <Footer />
+        </>
     );
 }
 

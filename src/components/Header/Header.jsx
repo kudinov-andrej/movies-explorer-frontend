@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Header.css';
-import Logo from "../../images/headerLogo.svg";
 import PopapNavBar from '../PopapNavBar/PopapNavBar.jsx';
 import Navigation from '../Navigation/Navigation';
+import Logotip from '../Logotip/Logotip';
 
 function Header(props) {
 
@@ -11,9 +10,7 @@ function Header(props) {
     return (
         <>
             <header className='header'>
-                <Link className="header__link" to="/">
-                    <img className="header__logo" src={Logo} alt='логотип сайта'></img>
-                </Link>
+                <Logotip />
                 <Navigation
                     handleСhangePopapNavBar={props.handleСhangePopapNavBar}
                     isOpenPopapNavBar={props.isOpenPopapNavBar}

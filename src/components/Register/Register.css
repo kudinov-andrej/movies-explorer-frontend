@@ -1,14 +1,3 @@
-.app {
-    margin: 0 auto;
-    max-width: 1280px;
-    background: #FFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-/*
 .authorization {
     margin-top: 232px;
     width: 100%;
@@ -208,6 +197,7 @@
 
 .authorization__button:hover {
     scale: 1.05;
+    cursor: pointer;
 }
 
 .authorization__question-conteiner {
@@ -278,4 +268,3 @@
     cursor: pointer;
     scale: 1.05;
 }
-*/

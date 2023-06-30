@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import './App.css';
-import Header from '../Header/Header';
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from "../Profile/Profile";
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
 
-  const [islogin, setIslogin] = useState(true);
+  const [islogin, setIslogin] = useState(false);
 
   // открытие модального окна
 
@@ -39,21 +39,22 @@ function App() {
 
   return (
     <body className="app">
-      <Header
-        handleСhangePopapNavBar={handleСhangePopapNavBar}
-        isOpenPopapNavBar={isOpenPopapNavBar}
-        islogin={islogin}
-      />
       <Routes>
         <Route path="/"
           element={<Main
             scrollToSection={scrollToSection}
+            handleСhangePopapNavBar={handleСhangePopapNavBar}
+            isOpenPopapNavBar={isOpenPopapNavBar}
+            islogin={islogin}
           />}
         />
         <Route path="/movies"
           element={
             <Movies
               cards={cards}
+              handleСhangePopapNavBar={handleСhangePopapNavBar}
+              isOpenPopapNavBar={isOpenPopapNavBar}
+              islogin={islogin}
             />
           }
         />
@@ -61,16 +62,32 @@ function App() {
           element={
             <SavedMovies
               cards={likeCards}
+              handleСhangePopapNavBar={handleСhangePopapNavBar}
+              isOpenPopapNavBar={isOpenPopapNavBar}
+              islogin={islogin}
             />
           }
         />
         <Route path="/profile"
           element={
-            <Profile />
+            <Profile
+              handleСhangePopapNavBar={handleСhangePopapNavBar}
+              isOpenPopapNavBar={isOpenPopapNavBar}
+              islogin={islogin}
+            />
+          }
+        />
+        <Route path="/signin"
+          element={
+            <Login />
+          }
+        />
+        <Route path="/signup"
+          element={
+            <Register />
           }
         />
       </Routes>
-      <Footer />
     </body >
   );
 }

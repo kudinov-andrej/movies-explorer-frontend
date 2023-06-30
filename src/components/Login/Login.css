@@ -1,15 +1,4 @@
-.app {
-    margin: 0 auto;
-    max-width: 1280px;
-    background: #FFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-/*
-.authorization {
+.login {
     margin-top: 232px;
     width: 100%;
     max-width: 396px;
@@ -21,7 +10,7 @@
 }
 
 @media screen and (max-width: 450px) {
-    .authorization {
+    .login {
         margin-top: 56px;
         max-width: 260px;
         margin-right: 30px;
@@ -29,7 +18,7 @@
     }
 }
 
-.authorization__logo {
+.login__logo {
     margin: 0;
     padding: 0;
     max-width: 38px;
@@ -39,14 +28,14 @@
 }
 
 @media screen and (max-width: 450px) {
-    .authorization__logo {
+    .login__logo {
         justify-self: center;
         align-self: center;
         margin-bottom: 50px;
     }
 }
 
-.authorization__link {
+.login__link {
     margin: 0;
     padding: 0;
     max-width: 38px;
@@ -55,17 +44,17 @@
 }
 
 @media screen and (max-width: 450px) {
-    .authorization__link {
+    .login__link {
         align-self: center;
     }
 }
 
-.authorization__link:hover {
+.login__link:hover {
     scale: 1.05;
     cursor: pointer;
 }
 
-.authorization__title {
+.login__title {
     margin: 0;
     padding: 0;
     max-width: 396px;
@@ -79,7 +68,7 @@
 }
 
 
-.authorization__form {
+.login__form {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -90,14 +79,14 @@
 }
 
 @media screen and (max-width: 430px) {
-    .authorization__form {
+    .login__form {
         max-width: 260px;
         align-self: center;
 
     }
 }
 
-.authorization__fieldset {
+.login__fieldset {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -107,7 +96,7 @@
     border: none;
 }
 
-.authorization__input-conteiner {
+.login__input-conteiner {
     margin: 0;
     padding: 0;
     display: flex;
@@ -115,11 +104,11 @@
     margin-bottom: 24px;
 }
 
-.authorization__input-conteiner:last-child {
+.login__input-conteiner:last-child {
     margin-bottom: 6px;
 }
 
-.authorization__label {
+.login__label {
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
@@ -132,7 +121,7 @@
     line-height: normal;
 }
 
-.authorization__input {
+.login__input {
     margin: 0;
     padding: 0;
     max-width: 396px;
@@ -148,22 +137,22 @@
 }
 
 @media screen and (max-width: 320px) {
-    .authorization__input {
+    .login__input {
         max-width: 260px;
         font-weight: 500;
     }
 }
 
-.authorization__input:focus {
+.login__input:focus {
     outline: none;
     border-bottom: 1px solid #3456F3;
 }
 
 
-.authorization__error {
+.login__error {
     margin: 0;
     padding: 0;
-    margin-bottom: 122px;
+    margin-bottom: 185px;
     height: 30px;
     max-width: 396px;
     color: #EE3465;
@@ -176,13 +165,13 @@
 }
 
 @media screen and (max-width: 320px) {
-    .authorization__error {
-        margin-bottom: 279px;
+    .login__error {
+        margin-bottom: 273px;
         max-width: 260px;
     }
 }
 
-.authorization__button {
+.login__button {
     margin: 0;
     padding: 0;
     margin-bottom: 16px;
@@ -206,11 +195,12 @@
     justify-content: center;
 }
 
-.authorization__button:hover {
+.login__button:hover {
     scale: 1.05;
+    cursor: pointer;
 }
 
-.authorization__question-conteiner {
+.login__question-conteiner {
     margin: 0;
     padding: 0;
     max-width: 286px;
@@ -220,19 +210,19 @@
 }
 
 @media screen and (max-width: 768px) {
-    .authorization__question-conteiner {
+    .login__question-conteiner {
         margin-bottom: 232px;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .authorization__question-conteiner {
+    .login__question-conteiner {
         margin-bottom: 30px;
         max-width: 260px;
     }
 }
 
-.authorization__question {
+.login__question {
     margin: 0;
     padding: 0;
     margin-right: 6px;
@@ -247,13 +237,13 @@
 }
 
 @media screen and (max-width: 320px) {
-    .authorization__question {
+    .login__question {
         max-width: 163px;
         font-size: 12px;
     }
 }
 
-.authorization__question-link {
+.login__question-link {
     margin: 0;
     padding: 0;
     max-width: 90px;
@@ -268,14 +258,13 @@
 }
 
 @media screen and (max-width: 320px) {
-    .authorization__question-link {
+    .login__question-link {
         max-width: 76px;
         font-size: 12px;
     }
 }
 
-.authorization__question-link:hover {
+.login__question-link:hover {
     cursor: pointer;
     scale: 1.05;
 }
-*/
