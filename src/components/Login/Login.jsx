@@ -15,11 +15,11 @@ function Login() {
                 <fieldset className='login__fieldset'>
                     <div className='login__input-conteiner'>
                         <label className='login__label' for='login__input-email'>E-mail</label>
-                        <input type="email" id="login__input-email" className="login__input" placeholder='Введите email' name="email" required />
+                        <input type="email" id="login__input-email" className="login__input" placeholder='Введите email' name="email" required minlength="5" maxlength="30" />
                     </div>
                     <div className='login__input-conteiner'>
                         <label className='login__label' for='login__input-password'>Пароль</label>
-                        <input type="password" id="login__input-password" className="login__input" placeholder='Введите пароль' name="password" required />
+                        <input type="password" id="login__input-password" className="login__input" placeholder='Введите пароль' name="password" required minlength="6" maxlength="30" />
                     </div>
                 </fieldset>
                 <span className="login__error login__input-{tupe-error}"></span>

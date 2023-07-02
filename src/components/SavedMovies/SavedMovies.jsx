@@ -19,7 +19,6 @@ function SavedMovies(props) {
                 <MoviesCardList
                     cards={props.cards}
                 />
-                <button className='movies__add-card'>Ещё</button>
             </section>
             <Footer />
         </>

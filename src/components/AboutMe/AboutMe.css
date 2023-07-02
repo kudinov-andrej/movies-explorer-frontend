@@ -26,7 +26,6 @@
     margin-bottom: 23px;
     color: #000;
     font-size: 22px;
-    font-family: Inter;
     letter-spacing: -0.88px;
     max-width: 600px;
     word-wrap: break-word;
@@ -69,7 +68,7 @@
 @media screen and (max-width: 768px) {
     .student__text-conteiner {
         margin-right: 50px;
-
+        margin-bottom: 0;
     }
 }
 
@@ -85,7 +84,6 @@
     max-width: 600px;
     color: #000;
     font-size: 50px;
-    font-family: Inter;
     line-height: 58px;
     letter-spacing: -2px;
 }
@@ -118,7 +116,6 @@
     max-width: 600px;
     color: #000;
     font-size: 18px;
-    font-family: Inter;
     font-weight: 500;
     line-height: 20px;
 }
@@ -146,7 +143,6 @@
     max-width: 600px;
     color: #000;
     font-size: 14px;
-    font-family: Inter;
     line-height: 22px;
     word-wrap: break-word;
 }
@@ -175,7 +171,6 @@
     text-decoration: none;
     color: #000;
     font-size: 14px;
-    font-family: Inter;
     font-weight: 500;
 }
 

@@ -12,7 +12,7 @@ import NotFound from '../NotFound/NotFound';
 
 function App() {
 
-  const [islogin, setIslogin] = useState(false);
+  const [islogin, setIslogin] = useState(true);
 
   // открытие модального окна
 

@@ -19,11 +19,11 @@ function Register() {
                     </div>
                     <div className='authorization__input-conteiner'>
                         <label className='authorization__label' for='authorization__input-email'>E-mail</label>
-                        <input type="email" id="authorization__input-email" className="authorization__input" placeholder='Введите email' name="email" required />
+                        <input type="email" id="authorization__input-email" className="authorization__input" placeholder='Введите email' name="email" required minlength="5" maxlength="30" />
                     </div>
                     <div className='authorization__input-conteiner'>
                         <label className='authorization__label' for='authorization__input-password'>Пароль</label>
-                        <input type="password" id="authorization__input-password" className="authorization__input" placeholder='Введите пароль' name="password" required />
+                        <input type="password" id="authorization__input-password" className="authorization__input" placeholder='Введите пароль' name="password" required minlength="6" maxlength="30" />
                     </div>
                 </fieldset>
                 <span className="authorization__error authorization__input-{tupe-error}"></span>

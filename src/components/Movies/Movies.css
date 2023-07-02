@@ -1,8 +1,10 @@
 .movies {
     margin: 0;
     padding: 0;
-    margin-left: 70px;
     margin-right: 70px;
+    margin-left: 70px;
+    width: 100%;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
 
@@ -10,6 +12,7 @@
 
 @media screen and (max-width: 768px) {
     .movies {
+        max-width: 708px;
         margin-left: 30px;
         margin-right: 30px;
     }
@@ -17,6 +20,7 @@
 
 @media screen and (max-width: 320px) {
     .movies {
+        max-width: 292px;
         margin-left: 14px;
         margin-right: 14px;
     }
@@ -34,7 +38,6 @@
     color: #000;
     text-align: center;
     font-size: 12px;
-    font-family: Inter;
     font-weight: 500;
     transition: scale 0.5s ease;
     align-self: center;

@@ -1,0 +1,60 @@
+.project-title__navigation {
+    max-width: 308px;
+}
+
+.project-title__navigation-list {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+    max-width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .project-title__navigation-list {
+        margin-bottom: 30px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .project-title__navigation-list {
+        margin-bottom: 22px;
+        gap: 6px;
+    }
+}
+
+
+
+.project-title__button {
+    margin: 0;
+    padding: 0;
+    width: 96px;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    background: #E8E8E8;
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    transition: background 0.3s ease;
+}
+
+
+.project-title__button:hover {
+    background: #3456F3;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+    .project-title__button {
+        width: 88px;
+        height: 26px;
+        font-size: 10px;
+    }
+}

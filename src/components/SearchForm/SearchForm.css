@@ -6,18 +6,6 @@
     border-bottom: solid 1.5px rgba(170, 170, 170, 0.2);
 }
 
-@media screen and (max-width: 768px) {
-    .movies {
-        margin-top: 88px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .movies {
-        margin-top: 70px;
-    }
-}
-
 .movies__input-conteiner {
     margin: 0;
     padding: 0;
@@ -40,7 +28,6 @@
     background: #FAFAFA;
     color: #A0A0A0;
     font-size: 18px;
-    font-family: Inter;
     line-height: 20px;
     border: none;
 }
@@ -58,7 +45,6 @@
     color: #FFF;
     text-align: center;
     font-size: 14px;
-    font-family: Inter;
     font-weight: 500;
     line-height: 18px;
     border-radius: 5px;
@@ -115,7 +101,6 @@
     text-align: center;
     color: #000;
     font-size: 13px;
-    font-family: Inter;
     line-height: 18px;
 }
 

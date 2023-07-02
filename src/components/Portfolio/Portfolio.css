@@ -6,7 +6,6 @@
     margin-bottom: 125px;
     color: #A0A0A0;
     font-size: 18px;
-    font-family: Inter;
     line-height: 20px;
 
 }
@@ -32,7 +31,6 @@
     margin-bottom: 23px;
     color: #000;
     font-size: 22px;
-    font-family: Inter;
     letter-spacing: -0.88px;
     max-width: 600px;
     word-wrap: break-word;
@@ -113,10 +111,23 @@
     max-width: 880px;
     text-align: start;
     font-size: 30px;
-    font-family: Inter;
     line-height: 50px;
     letter-spacing: -1.2px;
     color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .button__text {
+        max-width: 386px;
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .button__text {
+        max-width: 250px;
+        font-size: 18px;
+    }
 }
 
 .button__arrow {
@@ -126,7 +137,6 @@
     text-align: end;
     color: #000;
     font-size: 30px;
-    font-family: Inter;
     line-height: 60px;
     letter-spacing: -1.2px;
 

@@ -5,7 +5,8 @@
     margin-bottom: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
+    row-gap: 37px;
+    column-gap: 24px;
 }
 
 @media screen and (max-width: 768px) {
