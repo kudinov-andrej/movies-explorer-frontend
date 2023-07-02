@@ -1,3 +1,5 @@
+Ссылка на макет Figma: https://drive.google.com/file/d/1GIvxlS1dHiDoZpB5uhsF9OQQIXvftaUt/view?usp=sharing
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
