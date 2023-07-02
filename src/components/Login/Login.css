@@ -66,8 +66,13 @@
     margin-bottom: 40px;
 }
 
+@media screen and (max-width: 450px) {
+    .login__title {
+        align-self: center;
+    }
+}
 
-.login__form {
+.login-form {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -78,14 +83,14 @@
 }
 
 @media screen and (max-width: 430px) {
-    .login__form {
+    .login-form {
         max-width: 260px;
         align-self: center;
 
     }
 }
 
-.login__fieldset {
+.login-form__fieldset {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -95,7 +100,7 @@
     border: none;
 }
 
-.login__input-conteiner {
+.login-form__input-conteiner {
     margin: 0;
     padding: 0;
     display: flex;
@@ -103,11 +108,11 @@
     margin-bottom: 24px;
 }
 
-.login__input-conteiner:last-child {
+.login-form__input-conteiner:last-child {
     margin-bottom: 6px;
 }
 
-.login__label {
+.login-form__label {
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
@@ -119,7 +124,7 @@
     line-height: normal;
 }
 
-.login__input {
+.login-form__input {
     margin: 0;
     padding: 0;
     max-width: 396px;
@@ -134,19 +139,19 @@
 }
 
 @media screen and (max-width: 320px) {
-    .login__input {
+    .login-form__input {
         max-width: 260px;
         font-weight: 500;
     }
 }
 
-.login__input:focus {
+.login-form__input:focus {
     outline: none;
     border-bottom: 1px solid #3456F3;
 }
 
 
-.login__error {
+.login-form__error {
     margin: 0;
     padding: 0;
     margin-bottom: 185px;
@@ -161,13 +166,13 @@
 }
 
 @media screen and (max-width: 320px) {
-    .login__error {
+    .login-form__error {
         margin-bottom: 273px;
         max-width: 260px;
     }
 }
 
-.login__button {
+.login-form__button {
     margin: 0;
     padding: 0;
     margin-bottom: 16px;
@@ -190,12 +195,12 @@
     justify-content: center;
 }
 
-.login__button:hover {
+.login-form__button:hover {
     scale: 1.05;
     cursor: pointer;
 }
 
-.login__question-conteiner {
+.login-form__question-conteiner {
     margin: 0;
     padding: 0;
     max-width: 286px;
@@ -205,19 +210,19 @@
 }
 
 @media screen and (max-width: 768px) {
-    .login__question-conteiner {
+    .login-form__question-conteiner {
         margin-bottom: 232px;
     }
 }
 
-@media screen and (max-width: 320px) {
-    .login__question-conteiner {
+@media screen and (max-width: 450px) {
+    .login-form__question-conteiner {
         margin-bottom: 30px;
         max-width: 260px;
     }
 }
 
-.login__question {
+.login-form__question {
     margin: 0;
     padding: 0;
     margin-right: 6px;
@@ -230,14 +235,14 @@
     line-height: normal;
 }
 
-@media screen and (max-width: 320px) {
-    .login__question {
+@media screen and (max-width: 450px) {
+    .login-form__question {
         max-width: 163px;
         font-size: 12px;
     }
 }
 
-.login__question-link {
+.login-form__question-link {
     margin: 0;
     padding: 0;
     max-width: 90px;
@@ -251,14 +256,14 @@
     transition: scale ease;
 }
 
-@media screen and (max-width: 320px) {
-    .login__question-link {
+@media screen and (max-width: 450px) {
+    .login-form__question-link {
         max-width: 76px;
         font-size: 12px;
     }
 }
 
-.login__question-link:hover {
+.login-form__question-link:hover {
     cursor: pointer;
     scale: 1.05;
 }

@@ -38,7 +38,7 @@
 }
 
 
-.profile__form {
+.profile-form {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -49,12 +49,12 @@
 
 
 @media screen and (max-width: 500px) {
-    .profile__form {
+    .profile-form {
         max-width: 260px;
     }
 }
 
-.profile__fieldset {
+.profile-form__fieldset {
     margin: 0;
     padding: 0;
     border: none;
@@ -63,12 +63,12 @@
 }
 
 @media screen and (max-width: 500px) {
-    .profile__fieldset {
+    .profile-form__fieldset {
         max-width: 260px;
     }
 }
 
-.profile__input-conteiner {
+.profile-form__input-conteiner {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,17 +80,17 @@
 }
 
 @media screen and (max-width: 500px) {
-    .profile__input-conteiner {
+    .profile-form__input-conteiner {
         max-width: 260px;
     }
 }
 
-.profile__fieldset:last-child {
+.profile-form__fieldset:last-child {
     border: none;
     margin-bottom: 0;
 }
 
-.profile__label {
+.profile-form__label {
     margin: 0;
     padding: 0;
     width: 30%;
@@ -105,14 +105,14 @@
 }
 
 @media screen and (max-width: 500px) {
-    .profile__label {
+    .profile-form__label {
         width: 55%;
         max-width: 130px;
 
     }
 }
 
-.profile__input {
+.profile-form__input {
     margin: 0;
     padding: 0;
     width: 70%;
@@ -130,17 +130,17 @@
 }
 
 @media screen and (max-width: 500px) {
-    .profile__input {
+    .profile-form__input {
         width: 45%;
         max-width: 120px;
     }
 }
 
-.profile__input:focus {
+.profile-form__input:focus {
     outline: none;
 }
 
-.profile__error {
+.profile-form__error {
     margin: 0;
     padding: 0;
     margin-bottom: 190px;
@@ -157,20 +157,20 @@
 }
 
 @media screen and (max-width: 768px) {
-    .profile__error {
+    .profile-form__error {
         margin-bottom: 180px;
 
     }
 }
 
 @media screen and (max-width: 500px) {
-    .profile__error {
+    .profile-form__error {
         margin-bottom: 349px;
         max-width: 260px;
     }
 }
 
-.profile__button {
+.profile-form__button {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -187,25 +187,25 @@
     transition: scale 0.2s ease;
 }
 
-.profile__button:hover {
+.profile-form__button:hover {
     cursor: pointer;
     scale: 1.05;
 }
 
-.profile__button_type_exit {
+.profile-form__button_type_exit {
     color: #EE3465;
     margin-bottom: 70px;
 }
 
 @media screen and (max-width: 768px) {
-    .profile__button_type_exit {
+    .profile-form__button_type_exit {
         margin-bottom: 269px;
 
     }
 }
 
 @media screen and (max-width: 500px) {
-    .profile__button_type_exit {
+    .profile-form__button_type_exit {
         margin-bottom: 40px;
 
     }

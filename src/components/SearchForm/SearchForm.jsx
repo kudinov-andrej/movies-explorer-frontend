@@ -6,7 +6,7 @@ function SearchForm() {
     return (
         <form className='movies__form'>
             <div className='movies__input-conteiner'>
-                <input className='movies__input' placeholder='Фильм'></input>
+                <input className='movies__input' placeholder='Фильм' required></input>
                 <button className='movies__button'>Поиск</button>
             </div>
             <div className='movies__checkbox-conteiner'>

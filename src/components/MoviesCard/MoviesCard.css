@@ -30,7 +30,7 @@
     padding: 0;
     max-width: 364px;
     height: 190px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 

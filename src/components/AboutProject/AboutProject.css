@@ -26,6 +26,7 @@
     margin-bottom: 23px;
     color: #000;
     font-size: 22px;
+    font-weight: 400;
     letter-spacing: -0.88px;
     max-width: 600px;
     word-wrap: break-word;
@@ -48,6 +49,7 @@
 .promo__subtitle {
     margin: 0;
     padding: 0;
+    font-weight: 400;
     margin-top: 70px;
     margin-bottom: 26px;
     max-width: 550px;
@@ -134,7 +136,7 @@
     max-width: 200px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
     .promo__progress-beckend-item {
         font-size: 11px;
     }
@@ -167,7 +169,7 @@
     max-width: 200px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
     .promo__progress-frontend-item {
         font-size: 11px;
     }
@@ -193,7 +195,7 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 440px) {
     .promo__progress-label {
         font-size: 11px;
         font-family: Suisse Intl;

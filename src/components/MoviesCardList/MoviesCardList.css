@@ -16,8 +16,9 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .movies__list {
+        align-self: center;
         margin-bottom: 76px;
         grid-template-columns: 1fr;
     }

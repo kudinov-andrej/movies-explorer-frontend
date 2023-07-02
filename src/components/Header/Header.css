@@ -8,14 +8,14 @@
     justify-content: space-between;
     margin-right: 70px;
     margin-left: 70px;
-    width: 100%;
+    width: 89.0625%;
     max-width: 1140px;
     height: 78px;
 }
 
 @media screen and (max-width: 768px) {
     .header {
-        max-width: 708px;
+        max-width: 92.1875%;
         margin-right: 30px;
         margin-left: 30px;
     }
