@@ -1,0 +1,184 @@
+.popap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.popap_opened {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.popap__navigation {
+    margin: 0;
+    padding: 0;
+    min-width: 520px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    right: 0;
+    top: 0;
+    background: #FAFAFA;
+}
+
+@media screen and (max-width: 520px) {
+    .popap__navigation {
+        min-width: 320px;
+
+    }
+}
+
+.popap__link-container {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 621px;
+    justify-self: flex-start;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media screen and (max-width: 520px) {
+    .popap__link-container {
+        margin-bottom: 444px;
+    }
+}
+
+.popap__link-container-off {
+    display: none;
+}
+
+.popap__button-container {
+    margin: 0;
+    padding: 0;
+    margin-right: 70px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.popap__link-punkt {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 28px;
+}
+
+.popap__link-punkt:last-child {
+    margin-bottom: 0;
+}
+
+.popap__link {
+    max-width: 142px;
+    text-decoration: none;
+    color: #000;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+
+
+.popap__link_active {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 4px;
+}
+
+.popap__button:hover {
+    cursor: pointer;
+}
+
+.popap__button-close {
+    margin: 0;
+    padding: 0;
+    margin-top: 22px;
+    margin-right: 22px;
+    margin-bottom: 105px;
+    border: none;
+    background: transparent;
+    background-image: url('../../images/IconClose.svg');
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    align-self: flex-end;
+}
+
+.popap__button-close:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+    .popap__button-close {
+        margin-bottom: 99px;
+    }
+}
+
+
+
+.popap__button-accaunt {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    margin-bottom: 92px;
+    width: 100px;
+    height: 32px;
+    color: #000;
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+}
+
+.popap__button-accaunt:hover {
+    border-radius: 3px;
+    background: #3456F3;
+    color: white;
+    cursor: pointer;
+}
+
+.button__accaunt-text {
+    margin: 0;
+    padding: 0;
+    margin-left: 1px;
+    margin-right: 17px;
+    max-width: 57px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.button__accaunt-img {
+    margin: 0;
+    padding: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    width: 11px;
+    height: 14px;
+    padding: 8px;
+    border-radius: 4px;
+    background: #F4F4F4
+}

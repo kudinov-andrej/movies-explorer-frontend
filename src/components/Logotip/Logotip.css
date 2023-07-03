@@ -1,0 +1,18 @@
+.header__logo {
+    margin: 18px 0 18px 0;
+    width: 38px;
+    height: 38px;
+}
+
+
+.header__link {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    transition: scale 0.5s ease;
+}
+
+.header__link:hover {
+    scale: 1.05;
+    cursor: pointer;
+}
