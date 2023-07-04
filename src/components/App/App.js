@@ -9,9 +9,11 @@ import Profile from "../Profile/Profile";
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
-
+  const [currentUser, setCurrentUser] = useState({})
   const [islogin, setIslogin] = useState(true);
 
   // открытие модального окна
@@ -39,62 +41,64 @@ function App() {
   const likeCards = Array(CARDS_AMOUNT_TWO).fill(null);
 
   return (
-    <body className="app">
-      <Routes>
-        <Route path="/"
-          element={<Main
-            scrollToSection={scrollToSection}
-            handleСhangePopapNavBar={handleСhangePopapNavBar}
-            isOpenPopapNavBar={isOpenPopapNavBar}
-            islogin={islogin}
-          />}
-        />
-        <Route path="/movies"
-          element={
-            <Movies
-              cards={cards}
+    <CurrentUserContext.Provider value={currentUser}>
+      <body className="app">
+        <Routes>
+          <Route path="/"
+            element={<Main
+              scrollToSection={scrollToSection}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
             />
-          }
-        />
-        <Route path="/saved-movies"
-          element={
-            <SavedMovies
+            }
+          />
+          <Route path="/movies"
+            element={<ProtectedRoute
+              element={Movies}
+              cards={cards}
+              handleСhangePopapNavBar={handleСhangePopapNavBar}
+              isOpenPopapNavBar={isOpenPopapNavBar}
+              islogin={islogin}
+            />}
+          />
+          <Route path="/saved-movies"
+            element={<ProtectedRoute
+              element={SavedMovies}
               cards={likeCards}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
             />
-          }
-        />
-        <Route path="/profile"
-          element={
-            <Profile
+            }
+          />
+          <Route path="/profile"
+            element={<ProtectedRoute
+              element={Profile}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
             />
-          }
-        />
-        <Route path="/signin"
-          element={
-            <Login />
-          }
-        />
-        <Route path="/signup"
-          element={
-            <Register />
-          }
-        />
-        <Route path="*"
-          element={
-            <NotFound />
-          }
-        />
-      </Routes>
-    </body >
+            }
+          />
+          <Route path="/signin"
+            element={
+              <Login />
+            }
+          />
+          <Route path="/signup"
+            element={
+              <Register />
+            }
+          />
+          <Route path="*"
+            element={
+              <NotFound />
+            }
+          />
+        </Routes>
+      </body >
+    </CurrentUserContext.Provider>
   );
 }
 
