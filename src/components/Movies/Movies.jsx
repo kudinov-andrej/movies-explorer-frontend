@@ -17,7 +17,7 @@ function Movies(props) {
             <section className='movies'>
                 <SearchForm />
                 <MoviesCardList
-                    cards={props.cards}
+                    cards={props.nCards}
                 />
                 <button className='movies__add-card'>Ещё</button>
             </section>

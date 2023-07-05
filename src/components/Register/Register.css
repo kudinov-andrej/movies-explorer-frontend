@@ -192,6 +192,7 @@
     line-height: normal;
     transition: scale 0.3s ease;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
@@ -207,6 +208,8 @@
     max-width: 286px;
     display: flex;
     flex-direction: row;
+    justify-self: center;
+    align-self: center;
     margin-bottom: 70px;
 }
 

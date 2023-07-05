@@ -17,7 +17,7 @@ function SavedMovies(props) {
             <section className='movies'>
                 <SearchForm />
                 <MoviesCardList
-                    cards={props.cards}
+                    cards={props.nCards}
                 />
             </section>
             <Footer />

@@ -191,6 +191,7 @@
     line-height: normal;
     transition: scale 0.3s ease;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
