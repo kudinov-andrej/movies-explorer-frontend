@@ -25,6 +25,20 @@
     }
 }
 
+.movies-card__link {
+    margin: 0;
+    padding: 0;
+    justify-self: center;
+    align-self: center;
+    text-decoration: none;
+    transition: scale 0.3s ease;
+}
+
+.movies-card__link:hover {
+    cursor: pointer;
+    scale: 1.01;
+}
+
 .movies-card__image {
     margin: 0;
     padding: 0;

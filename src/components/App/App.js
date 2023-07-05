@@ -13,10 +13,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as auth from '../Api/auth';
 import api from '../Api/ApiMyMovies';
+import apiAllMovies from '../Api/MoviesApi';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
   const [islogin, setIslogin] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
@@ -37,17 +39,16 @@ function App() {
 
   useEffect(() => {
     if (islogin) {
-      Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
+      Promise.all([api.getCurrentUser(), api.getCards(), apiAllMovies.getCards()]).then(([userData, cards, allMovies]) => {
         setCurrentUser(userData);
         setCards(cards);
+        setAllMovies(allMovies);
       })
         .catch((err) => {
           console.error(err);
         });
     }
   }, [islogin]);
-
-  console.log(token);
 
   useEffect(() => {
     if (token) {
@@ -103,9 +104,10 @@ function App() {
   }
 
   useEffect(() => {
-    Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
+    Promise.all([api.getCurrentUser(), api.getCards(), apiAllMovies.getCards()]).then(([userData, cards, allMovies]) => {
       setCurrentUser(userData);
       setCards(cards);
+      setAllMovies(allMovies);
     }).catch((err) => {
       console.error(err);
     });
@@ -139,7 +141,7 @@ function App() {
 
   const CARDS_AMOUNT = 12;
   const CARDS_AMOUNT_TWO = 4;
-  const nCards = Array(CARDS_AMOUNT).fill(null);
+  // const nCards = Array(CARDS_AMOUNT).fill(null);
   const likeCards = Array(CARDS_AMOUNT_TWO).fill(null);
 
   return (
@@ -158,7 +160,7 @@ function App() {
           <Route path="/movies"
             element={<ProtectedRoute
               element={Movies}
-              nCards={nCards}
+              cards={allMovies}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}

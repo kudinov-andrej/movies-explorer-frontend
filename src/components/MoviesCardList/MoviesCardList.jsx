@@ -8,7 +8,9 @@ function MoviesCardList(props) {
     return (
         <div className='movies__list'>
             {props.cards.map((card, index) => (
-                <MoviesCard key={index} />
+                <MoviesCard key={index}
+                    card={card}
+                />
             ))}
         </div>
     );
