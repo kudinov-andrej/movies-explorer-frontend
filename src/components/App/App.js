@@ -17,8 +17,6 @@ import apiAllMovies from '../Api/MoviesApi';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
-  const [allMovies, setAllMovies] = useState([]);
   const [islogin, setIslogin] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
@@ -26,7 +24,14 @@ function App() {
     password: ""
   });
   const [token, setToken] = useState("");
-
+  const [cards, setCards] = useState([]);
+  const [resultSearchMovies, setResultSearchMovies] = useState([]);
+  const [search, setSearch] = useState("");
+  const [checkboxValue, setCheckboxValue] = useState(false);
+  const [startingSearch, setStartingSearch] = useState(false);
+  const [allMovies, setAllMovies] = useState([]);
+  const [notFound, setNotFound] = useState(false);
+  const [preloader, setPreloader] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,10 +44,9 @@ function App() {
 
   useEffect(() => {
     if (islogin) {
-      Promise.all([api.getCurrentUser(), api.getCards(), apiAllMovies.getCards()]).then(([userData, cards, allMovies]) => {
+      Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
         setCurrentUser(userData);
         setCards(cards);
-        setAllMovies(allMovies);
       })
         .catch((err) => {
           console.error(err);
@@ -64,6 +68,54 @@ function App() {
         })
     }
   }, [token, navigate]);
+
+  // получение всех фильмов
+
+
+  const getAllMovies = () => {
+    apiAllMovies.getCards()
+      .then((allMovies) => {
+        setAllMovies(allMovies);
+        searchMovies(allMovies);
+        setPreloader(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // поиск фильмов
+
+  function searchMovies(movies) {
+    const filteredMovies = movies.filter((card) =>
+      Object.values(card).some((value) =>
+        typeof value === "string" && value.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+    setResultSearchMovies(filteredMovies);
+    setNotFound(false);
+    if (checkboxValue) {
+      const filteredMoviesLessThan40Mins = filteredMovies.filter((card) =>
+        card.duration < 40
+
+      );
+      if (filteredMoviesLessThan40Mins.length === 0) {
+        setNotFound(true);
+      }
+      setResultSearchMovies(filteredMoviesLessThan40Mins);
+      setNotFound(false);
+    }
+    if (filteredMovies.length === 0) {
+      setNotFound(true);
+    }
+  }
+
+  useEffect(() => {
+    searchMovies(allMovies)
+    console.log("функция вызвалась")
+  }, [search, checkboxValue, notFound, allMovies]);
+
+  // регистрация
 
   const registerUser = ({ name, email, password }) => {
     auth
@@ -104,10 +156,9 @@ function App() {
   }
 
   useEffect(() => {
-    Promise.all([api.getCurrentUser(), api.getCards(), apiAllMovies.getCards()]).then(([userData, cards, allMovies]) => {
+    Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
       setCurrentUser(userData);
       setCards(cards);
-      setAllMovies(allMovies);
     }).catch((err) => {
       console.error(err);
     });
@@ -160,10 +211,21 @@ function App() {
           <Route path="/movies"
             element={<ProtectedRoute
               element={Movies}
-              cards={allMovies}
+              getAllMovies={getAllMovies}
+              cards={resultSearchMovies}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
+              searchMovies={searchMovies}
+              setSearch={setSearch}
+              setCheckboxValue={setCheckboxValue}
+              search={search}
+              checkboxValue={checkboxValue}
+              setStartingSearch={setStartingSearch}
+              startingSearch={startingSearch}
+              notFound={notFound}
+              preloader={preloader}
+              setPreloader={setPreloader}
             />}
           />
           <Route path="/saved-movies"

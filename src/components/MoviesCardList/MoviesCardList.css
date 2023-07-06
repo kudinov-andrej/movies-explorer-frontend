@@ -1,3 +1,12 @@
+.movies__text {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+    max-width: 300px;
+    align-self: center;
+    justify-self: center;
+}
+
 .movies__list {
     margin: 0;
     padding: 0;

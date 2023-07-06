@@ -7,8 +7,6 @@ import Footer from '../Footer/Footer';
 
 function Movies(props) {
 
-    const [searchMovies, setSearchMovies] = useState([]);
-
     return (
         <>
             <Header
@@ -19,10 +17,21 @@ function Movies(props) {
             <section className='movies'>
                 <SearchForm
                     cards={props.cards}
-                    setSearchMovies={setSearchMovies}
+                    getAllMovies={props.getAllMovies}
+                    setSearchMovies={props.setSearchMovies}
+                    searchMovies={props.searchMovies}
+                    setSearch={props.setSearch}
+                    setCheckboxValue={props.setCheckboxValue}
+                    setStartingSearch={props.setStartingSearch}
+                    search={props.search}
+                    checkboxValue={props.checkboxValue}
+                    setPreloader={props.setPreloader}
                 />
                 <MoviesCardList
-                    cards={searchMovies}
+                    cards={props.cards}
+                    startingSearch={props.startingSearch}
+                    notFound={props.notFound}
+                    preloader={props.preloader}
                 />
                 <button className='movies__add-card'>Ещё</button>
             </section>
