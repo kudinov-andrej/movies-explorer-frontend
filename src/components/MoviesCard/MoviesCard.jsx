@@ -1,26 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './MoviesCard.css';
-import Film from '../../images/film.png'
+import ApiMyMovies from '../Api/ApiMyMovies'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
 function MoviesCard(props) {
+
+    const [like, setLike] = useState(false);
 
     const baseUrl = "https://api.nomoreparties.co";
     const relativePath = props.card.image.url;
     const fullUrl = baseUrl + relativePath;
 
-    const [like, setLike] = useState(false);
+    const currentUser = useContext(CurrentUserContext);
+
+    console.log(props.card._id)
+
+    const movieData = {
+        country: props.card.country,
+        director: props.card.director,
+        duration: props.card.duration,
+        year: props.card.year,
+        description: props.card.description,
+        image: baseUrl + props.card.image.url,
+        trailerLink: props.card.trailerLink,
+        thumbnail: baseUrl + props.card.image.url,
+        owner: currentUser._id,
+        movieId: props.card.id,
+        nameRU: props.card.nameRU,
+        nameEN: props.card.nameEN,
+    };
 
     const handleLikeClick = () => {
-        setLike(!like);
-    }
+        if (!props.myMoviesPage) {
+            props.createMovies(movieData);
+            setLike(!like);
+        } else {
+            props.deleteMovies(props.card)
+        }
+
+    };
+
 
     return (
         <div className='movies-card'>
             <a className='movies-card__link' href={props.card.trailerLink} target='blank'>
-                <img className="movies-card__image" src={fullUrl} alt="фотография из фильма" />
+                <img className="movies-card__image" src={props.myMoviesPage ? props.card.image : fullUrl} alt="фотография из фильма" />
             </a>
             <div className='movies-card__content'>
                 <h2 className="movies-card__name">{props.card.nameRU}</h2>
-                <button type="button" className={like ? "movies-card__hard movies-card__hard_active " : "movies-card__hard"} onClick={handleLikeClick}></button>
+                <button
+                    type="button"
+                    className={
+                        props.myMoviesPage
+                            ? "movies-card__hard movies-card__hard_active"
+                            : like
+                                ? "movies-card__hard movies-card__hard_active"
+                                : "movies-card__hard"
+                    }
+                    onClick={handleLikeClick}
+                ></button>
             </div>
             <p className='movies-card__duration'>{props.card.duration}</p>
         </div>

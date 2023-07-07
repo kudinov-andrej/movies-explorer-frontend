@@ -13,7 +13,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as auth from '../Api/auth';
 import api from '../Api/ApiMyMovies';
-import apiAllMovies from '../Api/MoviesApi';
+
+//import apiAllMovies from '../Api/MoviesApi';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -25,13 +26,7 @@ function App() {
   });
   const [token, setToken] = useState("");
   const [cards, setCards] = useState([]);
-  const [resultSearchMovies, setResultSearchMovies] = useState([]);
-  const [search, setSearch] = useState("");
-  const [checkboxValue, setCheckboxValue] = useState(false);
-  const [startingSearch, setStartingSearch] = useState(false);
-  const [allMovies, setAllMovies] = useState([]);
-  const [notFound, setNotFound] = useState(false);
-  const [preloader, setPreloader] = useState(false)
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,51 +64,27 @@ function App() {
     }
   }, [token, navigate]);
 
-  // получение всех фильмов
+  // создание карточки
 
-
-  const getAllMovies = () => {
-    apiAllMovies.getCards()
-      .then((allMovies) => {
-        setAllMovies(allMovies);
-        searchMovies(allMovies);
-        setPreloader(false);
+  const createMovies = (movieData) => {
+    api.createCard(movieData)
+      .then((movieData) => {
+        console.log('Карточка создана:', movieData);
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.log('Ошибка при создании карточки:', error);
       });
   };
 
-  // поиск фильмов
 
-  function searchMovies(movies) {
-    const filteredMovies = movies.filter((card) =>
-      Object.values(card).some((value) =>
-        typeof value === "string" && value.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-    setResultSearchMovies(filteredMovies);
-    setNotFound(false);
-    if (checkboxValue) {
-      const filteredMoviesLessThan40Mins = filteredMovies.filter((card) =>
-        card.duration < 40
-
-      );
-      if (filteredMoviesLessThan40Mins.length === 0) {
-        setNotFound(true);
-      }
-      setResultSearchMovies(filteredMoviesLessThan40Mins);
-      setNotFound(false);
-    }
-    if (filteredMovies.length === 0) {
-      setNotFound(true);
-    }
+  // удаление карточки
+  function deleteMovies(card) {
+    api.deleteCard(card._id).then(() => {
+      // setCards((cards) => cards.filter((c) => c._id !== card._id));
+    }).catch((err) => {
+      console.error(err);
+    });
   }
-
-  useEffect(() => {
-    searchMovies(allMovies)
-    console.log("функция вызвалась")
-  }, [search, checkboxValue, notFound, allMovies]);
 
   // регистрация
 
@@ -188,12 +159,7 @@ function App() {
       smooth: 'easeInOutQuart'
     });
   }
-  // временный код для отрисовки карточек
 
-  const CARDS_AMOUNT = 12;
-  const CARDS_AMOUNT_TWO = 4;
-  // const nCards = Array(CARDS_AMOUNT).fill(null);
-  const likeCards = Array(CARDS_AMOUNT_TWO).fill(null);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -211,30 +177,19 @@ function App() {
           <Route path="/movies"
             element={<ProtectedRoute
               element={Movies}
-              getAllMovies={getAllMovies}
-              cards={resultSearchMovies}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
-              searchMovies={searchMovies}
-              setSearch={setSearch}
-              setCheckboxValue={setCheckboxValue}
-              search={search}
-              checkboxValue={checkboxValue}
-              setStartingSearch={setStartingSearch}
-              startingSearch={startingSearch}
-              notFound={notFound}
-              preloader={preloader}
-              setPreloader={setPreloader}
+              createMovies={createMovies}
             />}
           />
           <Route path="/saved-movies"
             element={<ProtectedRoute
               element={SavedMovies}
-              nCards={likeCards}
               handleСhangePopapNavBar={handleСhangePopapNavBar}
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
+              deleteMovies={deleteMovies}
             />
             }
           />

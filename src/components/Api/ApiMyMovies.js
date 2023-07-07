@@ -53,8 +53,8 @@ class Api {
             .then(this._getJson);
     }
 
-    deleteCard(id) {
-        return fetch(`${this._basePath}/movies/${id}`, {
+    deleteCard(_id) {
+        return fetch(`${this._basePath}/movies/${_id}`, {
             method: "DELETE",
             headers: this._getHeaders(),
         }).then(this._getJson);
