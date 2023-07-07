@@ -28,14 +28,25 @@ function MoviesCard(props) {
         nameEN: props.card.nameEN,
     };
 
-    const handleLikeClick = () => {
-        if (!props.myMoviesPage) {
-            props.createMovies(movieData);
-            setLike(!like);
-        } else {
-            props.deleteMovies(props.card)
-        }
 
+    const handleLikeClick = () => {
+        if (like) {
+            const deleteCard = props.myCards.find(card => card.movieId === props.card.id);
+            if (deleteCard) {
+                props.deleteMovies(deleteCard);
+                console.log("карточка удалена", deleteCard);
+                return;
+            } else {
+                console.log("Объект не найден");
+            }
+        } else {
+            if (!props.myMoviesPage) {
+                props.createMovies(movieData);
+                setLike(!like);
+            } else {
+                props.deleteMovies(props.card);
+            }
+        }
     };
 
 

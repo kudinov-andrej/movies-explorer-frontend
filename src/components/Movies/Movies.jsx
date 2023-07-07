@@ -62,6 +62,8 @@ function Movies(props) {
                     preloader={preloader}
                     createMovies={props.createMovies}
                     myMoviesPage={myMoviesPage}
+                    deleteMovies={props.deleteMovies}
+                    myCards={props.cards}
                 />
                 <button className='movies__add-card'>Ещё</button>
             </section>

@@ -180,6 +180,8 @@ function App() {
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
               createMovies={createMovies}
+              deleteMovies={deleteMovies}
+              cards={cards}
             />}
           />
           <Route path="/saved-movies"

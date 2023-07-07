@@ -21,6 +21,7 @@ function MoviesCardList(props) {
                         setLike={props.setLike}
                         like={props.like}
                         deleteMovies={props.deleteMovies}
+                        myCards={props.myCards}
                     />
                 ))}
             </div>
