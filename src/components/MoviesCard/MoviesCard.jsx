@@ -13,8 +13,6 @@ function MoviesCard(props) {
 
     const currentUser = useContext(CurrentUserContext);
 
-    console.log(props.card._id)
-
     const movieData = {
         country: props.card.country,
         director: props.card.director,

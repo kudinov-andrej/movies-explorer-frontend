@@ -26,7 +26,7 @@ function App() {
   });
   const [token, setToken] = useState("");
   const [cards, setCards] = useState([]);
-
+  const [preloader, setPreloader] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,9 +39,8 @@ function App() {
 
   useEffect(() => {
     if (islogin) {
-      Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
+      Promise.all([api.getCurrentUser()]).then(([userData]) => {
         setCurrentUser(userData);
-        setCards(cards);
       })
         .catch((err) => {
           console.error(err);
@@ -68,7 +67,8 @@ function App() {
 
   const createMovies = (movieData) => {
     api.createCard(movieData)
-      .then((movieData) => {
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
         console.log('Карточка создана:', movieData);
       })
       .catch((error) => {
@@ -80,7 +80,7 @@ function App() {
   // удаление карточки
   function deleteMovies(card) {
     api.deleteCard(card._id).then(() => {
-      // setCards((cards) => cards.filter((c) => c._id !== card._id));
+      setCards((cards) => cards.filter((c) => c._id !== card._id));
     }).catch((err) => {
       console.error(err);
     });
@@ -127,9 +127,8 @@ function App() {
   }
 
   useEffect(() => {
-    Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, cards]) => {
+    Promise.all([api.getCurrentUser()]).then(([userData]) => {
       setCurrentUser(userData);
-      setCards(cards);
     }).catch((err) => {
       console.error(err);
     });
@@ -190,6 +189,8 @@ function App() {
               isOpenPopapNavBar={isOpenPopapNavBar}
               islogin={islogin}
               deleteMovies={deleteMovies}
+              cards={cards}
+              setCards={setCards}
             />
             }
           />

@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { searchMovies } from '../../utils/searchMovies';
 import ApiMyMovies from '../Api/ApiMyMovies';
+import api from '../Api/ApiMyMovies';
 
 function SavedMovies(props) {
 
@@ -13,28 +14,29 @@ function SavedMovies(props) {
     const [search, setSearch] = useState("");
     const [checkboxValue, setCheckboxValue] = useState(false);
     const [startingSearch, setStartingSearch] = useState(true);
-    const [allMovies, setAllMovies] = useState([]);
     const [notFound, setNotFound] = useState(false);
     const [preloader, setPreloader] = useState(false);
     const [myMoviesPage, setMyMoviesPage] = useState(true);
 
     const getAllMovies = () => {
-        ApiMyMovies.getCards()
-            .then((allMovies) => {
-                setAllMovies(allMovies);
-                searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+        api.getCards()
+            .then(([cards]) => {
+                props.setCards(props.cards);
+                searchMovies(props.cards, search, checkboxValue, setResultSearchMovies, setNotFound);
                 setPreloader(false);
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 console.error(err);
             });
     };
     // отображение фильмов со стороннего апи
 
+
+
+
     useEffect(() => {
-        searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+        searchMovies(props.cards, search, checkboxValue, setResultSearchMovies, setNotFound);
         console.log("функция вызвалась")
-    }, [search, checkboxValue, notFound, allMovies]);
+    }, [search, checkboxValue, notFound, props.cards]);
 
 
     return (
@@ -55,6 +57,7 @@ function SavedMovies(props) {
                     search={search}
                     checkboxValue={checkboxValue}
                     setPreloader={setPreloader}
+                    myMoviesPage={myMoviesPage}
                 />
                 <MoviesCardList
                     cards={resultSearchMovies}

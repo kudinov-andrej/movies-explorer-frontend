@@ -3,6 +3,13 @@ import './SearchForm.css';
 
 function SearchForm(props) {
 
+    useEffect(() => {
+        if (props.myMoviesPage) {
+            startSearch();
+        };
+    }, []);
+
+
     function startSearch() {
         props.setStartingSearch(true)
         props.getAllMovies()
