@@ -14,6 +14,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as auth from '../Api/auth';
 import api from '../Api/ApiMyMovies';
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [islogin, setIslogin] = useState(true);

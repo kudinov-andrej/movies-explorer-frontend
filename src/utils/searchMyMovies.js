@@ -1,10 +1,10 @@
-export function searchMovies(movies, search, checkboxValue, setResultSearchMovies, setNotFound) {
+export function searchMyMovies(movies, search, checkboxValue, setResultSearchMyMovies, setNotFound) {
     const filteredMovies = movies.filter((card) =>
         Object.values(card).some((value) =>
             typeof value === "string" && value.toLowerCase().includes(search.toLowerCase())
         )
     );
-    setResultSearchMovies(filteredMovies);
+    setResultSearchMyMovies(filteredMovies);
 
     setNotFound(false);
     if (checkboxValue) {
@@ -15,7 +15,7 @@ export function searchMovies(movies, search, checkboxValue, setResultSearchMovie
         if (filteredMoviesLessThan40Mins.length === 0) {
             setNotFound(true);
         }
-        setResultSearchMovies(filteredMoviesLessThan40Mins);
+        setResultSearchMyMovies(filteredMoviesLessThan40Mins);
         setNotFound(false);
     }
     if (filteredMovies.length === 0) {

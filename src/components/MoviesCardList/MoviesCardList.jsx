@@ -2,6 +2,7 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
+import { searchMovies } from '../../utils/searchMovies';
 
 function MoviesCardList(props) {
 
@@ -11,6 +12,7 @@ function MoviesCardList(props) {
             <p className='movies__text'>
                 {props.startingSearch ? "" : "«Нужно ввести ключевое слово»"}
                 {props.startingSearch ? (props.notFound ? "«Ничего не найдено»" : "") : ""}
+                {props.errorGetAllMovies ? "«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз»" : ""}
             </p>
             <div className='movies__list'>
                 {props.cards.slice(0, props.cardsToShow).map((card, index) => (
@@ -23,6 +25,7 @@ function MoviesCardList(props) {
                         deleteMovies={props.deleteMovies}
                         myCards={props.myCards}
                         allCards={props.cards}
+
                     />
                 ))}
             </div>

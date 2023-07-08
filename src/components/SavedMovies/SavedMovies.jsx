@@ -4,13 +4,13 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { searchMovies } from '../../utils/searchMovies';
+import { searchMyMovies } from '../../utils/searchMyMovies';
 import ApiMyMovies from '../Api/ApiMyMovies';
 import api from '../Api/ApiMyMovies';
 
 function SavedMovies(props) {
 
-    const [resultSearchMovies, setResultSearchMovies] = useState([]);
+    const [resultSearchMyMovies, setResultSearchMyMovies] = useState([]);
     const [search, setSearch] = useState("");
     const [checkboxValue, setCheckboxValue] = useState(false);
     const [startingSearch, setStartingSearch] = useState(true);
@@ -20,9 +20,9 @@ function SavedMovies(props) {
 
     const getAllMovies = () => {
         api.getCards()
-            .then(([cards]) => {
-                props.setCards(props.cards);
-                searchMovies(props.cards, search, checkboxValue, setResultSearchMovies, setNotFound);
+            .then((card) => {
+                props.setCards(card);
+                searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
                 setPreloader(false);
             }).catch((err) => {
                 console.error(err);
@@ -34,7 +34,7 @@ function SavedMovies(props) {
 
 
     useEffect(() => {
-        searchMovies(props.cards, search, checkboxValue, setResultSearchMovies, setNotFound);
+        searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
         console.log("функция вызвалась")
     }, [search, checkboxValue, notFound, props.cards]);
 
@@ -48,9 +48,9 @@ function SavedMovies(props) {
             />
             <section className='movies'>
                 <SearchForm
-                    cards={resultSearchMovies}
+                    cards={props.cards}
                     getAllMovies={getAllMovies}
-                    searchMovies={searchMovies}
+                    searchMovies={searchMyMovies}
                     setSearch={setSearch}
                     setCheckboxValue={setCheckboxValue}
                     setStartingSearch={setStartingSearch}
@@ -58,9 +58,13 @@ function SavedMovies(props) {
                     checkboxValue={checkboxValue}
                     setPreloader={setPreloader}
                     myMoviesPage={myMoviesPage}
+                    allMovies={props.cards}
+                    setNotFound={setNotFound}
+                    setResultSearchMovies={setResultSearchMyMovies}
+
                 />
                 <MoviesCardList
-                    cards={resultSearchMovies}
+                    cards={resultSearchMyMovies}
                     startingSearch={startingSearch}
                     notFound={notFound}
                     preloader={preloader}

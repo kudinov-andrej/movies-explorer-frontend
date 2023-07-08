@@ -19,6 +19,7 @@ function Movies(props) {
     const [showButton, setShowButton] = useState(true);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [cardsToShow, setCardsToShow] = useState(0);
+    const [errorGetAllMovies, setErrorGetAllMovies] = useState(false);
 
     const getAllMovies = () => {
         apiAllMovies.getCards()
@@ -29,14 +30,42 @@ function Movies(props) {
             })
             .catch((err) => {
                 console.error(err);
+                setErrorGetAllMovies(true)
             });
     };
-    // отображение фильмов со стороннего апи
 
     useEffect(() => {
-        searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
-    }, [search, checkboxValue, notFound, allMovies]);
+        const savedLocalSearch = localStorage.getItem("search");
+        const savedLocalCheckboxValue = localStorage.getItem("checkboxValue");
+        const savedLocalResultSearchMovies = localStorage.getItem("resultSearchMovies");
 
+        if (savedLocalSearch) {
+            setSearch(savedLocalSearch);
+        }
+
+        if (savedLocalCheckboxValue) {
+            setCheckboxValue(JSON.parse(savedLocalCheckboxValue));
+        }
+
+        if (savedLocalResultSearchMovies) {
+            setResultSearchMovies(JSON.parse(savedLocalResultSearchMovies));
+            setStartingSearch(true);
+        }
+
+    }, []);
+
+
+    useEffect(() => {
+        if (resultSearchMovies && resultSearchMovies.length > 0) {
+            localStorage.setItem("resultSearchMovies", JSON.stringify(resultSearchMovies));
+            console.log("Сохранены результаты поиска в localStorage", JSON.stringify(resultSearchMovies));
+        }
+    }, [resultSearchMovies]);
+    /*
+        useEffect(() => {
+            searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+        }, [search, checkboxValue, notFound, allMovies]);
+    */
     // отображение требуемого количества карточек
 
     const handleResize = () => {
@@ -81,6 +110,7 @@ function Movies(props) {
         setShowButton(newCardsToShow < resultSearchMovies.length);
     };
 
+
     return (
         <>
             <Header
@@ -100,6 +130,12 @@ function Movies(props) {
                     search={search}
                     checkboxValue={checkboxValue}
                     setPreloader={setPreloader}
+
+                    //
+
+                    allMovies={allMovies}
+                    setNotFound={setNotFound}
+                    setResultSearchMovies={setResultSearchMovies}
                 />
                 <MoviesCardList
                     cards={resultSearchMovies}
@@ -111,6 +147,7 @@ function Movies(props) {
                     deleteMovies={props.deleteMovies}
                     myCards={props.cards}
                     cardsToShow={cardsToShow}
+                    errorGetAllMovies={errorGetAllMovies}
                 />
                 <button className={showButton ? 'movies__add-card' : "movies__add-card-off"} onClick={handleShowMore}>Ещё</button>
             </section>
