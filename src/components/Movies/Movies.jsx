@@ -16,6 +16,9 @@ function Movies(props) {
     const [notFound, setNotFound] = useState(false);
     const [preloader, setPreloader] = useState(false)
     const [myMoviesPage, setMyMoviesPage] = useState(false);
+    const [showButton, setShowButton] = useState(true);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [cardsToShow, setCardsToShow] = useState(0);
 
     const getAllMovies = () => {
         apiAllMovies.getCards()
@@ -32,8 +35,51 @@ function Movies(props) {
 
     useEffect(() => {
         searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
-        console.log("функция вызвалась")
     }, [search, checkboxValue, notFound, allMovies]);
+
+    // отображение требуемого количества карточек
+
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        calculateCardsToShow();
+        setShowButton(true);
+    }, [windowWidth, resultSearchMovies]);
+
+    const calculateCardsToShow = () => {
+        let newCardsToShow = 0;
+        if (windowWidth >= 769) {
+            newCardsToShow = 12;
+        } else if (windowWidth >= 501) {
+            newCardsToShow = 8;
+        } else {
+            newCardsToShow = 5;
+        }
+        setCardsToShow(newCardsToShow);
+    };
+
+    const handleShowMore = () => {
+        const remainingCards = resultSearchMovies.length - cardsToShow;
+        let increment;
+        if (windowWidth >= 769) {
+            increment = 3;
+        }
+        if (windowWidth <= 768) {
+            increment = 2;
+        }
+        const newCardsToShow = Math.min(cardsToShow + increment, resultSearchMovies.length);
+        setCardsToShow(newCardsToShow);
+        setShowButton(newCardsToShow < resultSearchMovies.length);
+    };
 
     return (
         <>
@@ -64,8 +110,9 @@ function Movies(props) {
                     myMoviesPage={myMoviesPage}
                     deleteMovies={props.deleteMovies}
                     myCards={props.cards}
+                    cardsToShow={cardsToShow}
                 />
-                <button className='movies__add-card'>Ещё</button>
+                <button className={showButton ? 'movies__add-card' : "movies__add-card-off"} onClick={handleShowMore}>Ещё</button>
             </section>
             <Footer />
         </>

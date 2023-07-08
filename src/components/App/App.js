@@ -14,8 +14,6 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as auth from '../Api/auth';
 import api from '../Api/ApiMyMovies';
 
-//import apiAllMovies from '../Api/MoviesApi';
-
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [islogin, setIslogin] = useState(true);
@@ -158,7 +156,6 @@ function App() {
       smooth: 'easeInOutQuart'
     });
   }
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

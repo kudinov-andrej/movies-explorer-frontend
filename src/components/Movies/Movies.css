@@ -47,3 +47,7 @@
     cursor: pointer;
     scale: 1.05;
 }
+
+.movies__add-card-off {
+    display: none;
+}

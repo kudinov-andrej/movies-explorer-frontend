@@ -13,7 +13,7 @@ function MoviesCardList(props) {
                 {props.startingSearch ? (props.notFound ? "«Ничего не найдено»" : "") : ""}
             </p>
             <div className='movies__list'>
-                {props.cards.map((card, index) => (
+                {props.cards.slice(0, props.cardsToShow).map((card, index) => (
                     <MoviesCard key={index}
                         card={card}
                         createMovies={props.createMovies}
