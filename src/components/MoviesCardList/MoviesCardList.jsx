@@ -22,6 +22,7 @@ function MoviesCardList(props) {
                         like={props.like}
                         deleteMovies={props.deleteMovies}
                         myCards={props.myCards}
+                        allCards={props.cards}
                     />
                 ))}
             </div>

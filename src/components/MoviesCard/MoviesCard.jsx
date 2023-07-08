@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './MoviesCard.css';
 import ApiMyMovies from '../Api/ApiMyMovies'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -27,6 +27,15 @@ function MoviesCard(props) {
         nameRU: props.card.nameRU,
         nameEN: props.card.nameEN,
     };
+
+    useEffect(() => {
+        if (props.allCards && props.myCards) {
+            const likeCards = props.allCards.filter(card => {
+                return props.myCards.some(myCard => myCard.movieId === card.id);
+            });
+            setLike(likeCards.some(card => card.id === props.card.id));
+        }
+    }, [props.myCards]);
 
 
     const handleLikeClick = () => {
