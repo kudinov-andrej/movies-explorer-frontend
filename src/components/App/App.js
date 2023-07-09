@@ -17,7 +17,7 @@ import api from '../Api/ApiMyMovies';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [islogin, setIslogin] = useState(false);
+  const [islogin, setIslogin] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -26,20 +26,28 @@ function App() {
   const [token, setToken] = useState("");
   const [cards, setCards] = useState([]);
   const [preloader, setPreloader] = useState(false);
+  const [errorServerMessage, setErrorServerMessage] = useState("");
+  const [ssuccessfulResponseServer, setSsuccessfulResponseServer] = useState("");
+  const [inactiveButtonStartSearch, setInactiveButtonStartSearch] = useState(true);
+  const [errorMessageSearchForm, setErrorMessageSearchForm] = useState('Введите запрос');
+  const [isOpenPopapNavBar, setIsopenPopapNavBar] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt")
     setToken(jwt);
+    setIslogin(true);
     if (!jwt) {
       setIslogin(false);
     }
   }, [])
 
   useEffect(() => {
-    if (islogin) {
+    const jwt = localStorage.getItem("jwt")
+    if (jwt) {
       Promise.all([api.getCurrentUser()]).then(([userData]) => {
         setCurrentUser(userData);
+        setIslogin(true);
       })
         .catch((err) => {
           console.error(err);
@@ -56,11 +64,8 @@ function App() {
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => {
-          // setIsLoading(false)
-        })
     }
-  }, [token, navigate]);
+  }, [token]);
 
   // создание карточки
 
@@ -75,7 +80,6 @@ function App() {
       });
   };
 
-
   // удаление карточки
   function deleteMovies(card) {
     api.deleteCard(card._id).then(() => {
@@ -86,7 +90,6 @@ function App() {
   }
 
   // регистрация
-  const [errorServerMessage, setErrorServerMessage] = useState("");
 
   const registerUser = ({ name, email, password }) => {
     auth
@@ -115,7 +118,8 @@ function App() {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
+        setErrorServerMessage(err.message)
       })
   }
 
@@ -124,27 +128,22 @@ function App() {
     setIslogin(false);
     setToken("")
     navigate("/signup")
-
   }
-  /*
-    useEffect(() => {
-      Promise.all([api.getCurrentUser()]).then(([userData]) => {
-        setCurrentUser(userData);
-      }).catch((err) => {
-        console.error(err);
-      });
-    }, []);*/
 
   function handleUpdateUser(data) {
     api.setUserInfo(data).then((newUser) => {
       setCurrentUser(newUser);
+      setErrorServerMessage("")
+      setSsuccessfulResponseServer("Данные успешно обновлены")
+      setTimeout(() => {
+        setSsuccessfulResponseServer("")
+      }, 3000)
     }).catch((err) => {
       console.error(err);
+      setErrorServerMessage(err.message)
     });
   }
   // открытие модального окна
-
-  const [isOpenPopapNavBar, setIsopenPopapNavBar] = useState(false);
 
   function handleСhangePopapNavBar() {
     setIsopenPopapNavBar(!isOpenPopapNavBar)
@@ -159,26 +158,6 @@ function App() {
       smooth: 'easeInOutQuart'
     });
   }
-
-
-  // валидация
-  /*
-    const [formErrors, setFormErrors] = useState({});
-    const [form, setForm] = useState({
-      name: "",
-      email: "",
-      password: "",
-    });
-  
-    const handleChange = (evt) => {
-      console.log("функция вызвалась")
-      const input = evt.target;
-      setForm({
-        ...form,
-        [input.name]: input.value,
-      });
-      //  setFormErrors({ ...formErrors, name: undefined });
-    };*/
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -202,6 +181,10 @@ function App() {
               createMovies={createMovies}
               deleteMovies={deleteMovies}
               cards={cards}
+              inactiveButtonStartSearch={inactiveButtonStartSearch}
+              setInactiveButtonStartSearch={setInactiveButtonStartSearch}
+              errorMessageSearchForm={errorMessageSearchForm}
+              setErrorMessageSearchForm={setErrorMessageSearchForm}
             />}
           />
           <Route path="/saved-movies"
@@ -213,6 +196,10 @@ function App() {
               deleteMovies={deleteMovies}
               cards={cards}
               setCards={setCards}
+              inactiveButtonStartSearch={inactiveButtonStartSearch}
+              setInactiveButtonStartSearch={setInactiveButtonStartSearch}
+              errorMessageSearchForm={errorMessageSearchForm}
+              setErrorMessageSearchForm={setErrorMessageSearchForm}
             />
             }
           />
@@ -225,6 +212,8 @@ function App() {
               onUpdateUser={handleUpdateUser}
               logOut={logOut}
               userData={userData}
+              setErrorServerMessage={setErrorServerMessage}
+              ssuccessfulResponseServer={ssuccessfulResponseServer}
             />
             }
           />
@@ -232,6 +221,8 @@ function App() {
             element={
               <Login
                 loginUser={loginUser}
+                errorServerMessage={errorServerMessage}
+                setErrorServerMessage={setErrorServerMessage}
               />
             }
           />
@@ -240,6 +231,7 @@ function App() {
               <Register
                 registerUser={registerUser}
                 errorServerMessage={errorServerMessage}
+                setErrorServerMessage={setErrorServerMessage}
               />
             }
           />

@@ -3,35 +3,27 @@ import './Profile.css';
 import Header from '../Header/Header';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useFormWithValidation } from '../UseFormValidation/useFormValidation';
 
 function Profile(props) {
-
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
     const currentUser = React.useContext(CurrentUserContext);
 
     useEffect(() => {
         if (props.islogin) {
-            setName(currentUser.name);
-            setEmail(currentUser.email);
+            resetForm({
+                name: currentUser.name,
+                email: currentUser.email,
+            });
         }
     }, [props.islogin, currentUser]);
 
-    function handleNameChange(evt) {
-        setName(evt.target.value)
-    }
-
-    function handleEmailChange(evt) {
-        setEmail(evt.target.value)
-    }
-
     function handleSubmit(evt) {
         evt.preventDefault();
-        props.onUpdateUser({
-            name,
-            email,
-        });
+        if (isValid) {
+            props.onUpdateUser(values);
+        }
     }
 
     const closePage = () => {
@@ -51,15 +43,32 @@ function Profile(props) {
                     <fieldset className='profile-form__fieldset'>
                         <div className='profile-form__input-conteiner'>
                             <label className='profile-form__label' for='profile-form__input-name'>Имя</label>
-                            <input type="text" id="profile-form__input-name" className="profile-form__input" value={props.islogin ? name : ""} name="name" required minlength="2" maxlength="30" onChange={handleNameChange} />
+                            <input type="text"
+                                id="profile-form__input-name"
+                                className="profile-form__input"
+                                value={props.islogin ? values.name : ""}
+                                name="name"
+                                required minlength="2"
+                                maxlength="30"
+                                onChange={handleChange} />
                         </div>
+                        <span className="profile-form__error">{errors.name}</span>
                         <div className='profile-form__input-conteiner'>
                             <label className='profile-form__label' for='profile-form__input-email'>E-mail</label>
-                            <input type="email" id="profile-form__input-email" className="profile-form__input" value={props.islogin ? email : ""} name="email" required onChange={handleEmailChange} />
+                            <input type="email"
+                                id="profile-form__input-email"
+                                className="profile-form__input"
+                                value={props.islogin ? values.email : ""}
+                                name="email"
+                                required
+                                pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+                                onChange={handleChange} />
                         </div>
+                        <span className="profile-form__error">{errors.email}</span>
                     </fieldset>
-                    <span className="profile-form__error profile-form__input-{tupe-error}"></span>
-                    <button className='profile-form__button profile-form__button_type_chenge' type='submit'>Изменить</button>
+                    <span className="profile-form__error profile-form__error_server">{props.errorServerMessage}</span>
+                    <span className="profile-form__error profile-form__error_ssuccessful">{props.ssuccessfulResponseServer}</span>
+                    <button className={`profile-form__button ${!isValid ? 'profile-form__button_disabled' : ''}`} type='submit' disabled={!isValid}>Изменить</button>
                 </form>
                 <buttom className='profile-form__button profile-form__button_type_exit' type='button' onClick={closePage}>Выйти из акаунта</buttom>
             </section>

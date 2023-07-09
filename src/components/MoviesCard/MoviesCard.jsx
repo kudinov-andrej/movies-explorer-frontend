@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './MoviesCard.css';
-import ApiMyMovies from '../Api/ApiMyMovies'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function MoviesCard(props) {
@@ -70,7 +69,7 @@ function MoviesCard(props) {
                     type="button"
                     className={
                         props.myMoviesPage
-                            ? "movies-card__hard movies-card__hard_active"
+                            ? "movies-card__hard movies-card__hard_delete"
                             : like
                                 ? "movies-card__hard movies-card__hard_active"
                                 : "movies-card__hard"

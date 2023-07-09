@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from "../../images/headerLogo.svg";
 import { Link } from 'react-router-dom';
 import './Register.css';
-import { useFormWithValidation } from '../useFormValidation';
+import { useFormWithValidation } from '../UseFormValidation/useFormValidation';
 
 function Register(props) {
     const { values, handleChange, errors, isValid } = useFormWithValidation();
@@ -11,6 +11,7 @@ function Register(props) {
         evt.preventDefault();
         if (isValid) {
             props.registerUser(values);
+            props.setErrorServerMessage("")
         }
     };
 
@@ -24,17 +25,45 @@ function Register(props) {
                 <fieldset className='authorization-form__fieldset'>
                     <div className='authorization-form__input-conteiner'>
                         <label className='authorization-form__label' htmlFor='authorization-form__input-name'>Имя</label>
-                        <input type="text" id="authorization-form__input-name" className="authorization-form__input" placeholder='Введите имя' name="name" required minLength="2" maxLength="30" value={values.name || ''} onChange={handleChange} />
+                        <input type="text"
+                            id="authorization-form__input-name"
+                            className="authorization-form__input"
+                            placeholder='Введите имя'
+                            name="name"
+                            required minLength="2"
+                            maxLength="30"
+                            value={values.name || ''}
+                            onChange={handleChange} />
                         {errors.name && <span className="authorization-form__error">{errors.name}</span>}
                     </div>
                     <div className='authorization-form__input-conteiner'>
                         <label className='authorization-form__label' htmlFor='authorization-form__input-email'>E-mail</label>
-                        <input type="email" id="authorization-form__input-email" className="authorization-form__input" placeholder='Введите email' name="email" required minLength="5" maxLength="30" value={values.email || ''} onChange={handleChange} />
+                        <input type="email"
+                            id="authorization-form__input-email"
+                            className="authorization-form__input"
+                            placeholder='Введите email'
+                            name="email"
+                            required minLength="5"
+                            maxLength="30"
+                            value={values.email || ''}
+                            onChange={handleChange}
+                            pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+                        />
                         {errors.email && <span className="authorization-form__error">{errors.email}</span>}
                     </div>
                     <div className='authorization-form__input-conteiner'>
                         <label className='authorization-form__label' htmlFor='authorization-form__input-password'>Пароль</label>
-                        <input type="password" id="authorization-form__input-password" className="authorization-form__input" placeholder='Введите пароль' name="password" required minLength="6" maxLength="30" autoComplete="current-password" value={values.password || ''} onChange={handleChange} />
+                        <input type="password"
+                            id="authorization-form__input-password"
+                            className="authorization-form__input"
+                            placeholder='Введите пароль'
+                            name="password"
+                            required
+                            minLength="6"
+                            maxLength="30"
+                            autoComplete="current-password"
+                            value={values.password || ''}
+                            onChange={handleChange} />
                         {errors.password && <span className="authorization-form__error">{errors.password}</span>}
                     </div>
                 </fieldset>

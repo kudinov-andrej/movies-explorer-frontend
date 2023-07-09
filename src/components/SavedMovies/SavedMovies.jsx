@@ -5,7 +5,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { searchMyMovies } from '../../utils/searchMyMovies';
-import ApiMyMovies from '../Api/ApiMyMovies';
 import api from '../Api/ApiMyMovies';
 
 function SavedMovies(props) {
@@ -30,10 +29,8 @@ function SavedMovies(props) {
     };
     // отображение фильмов со стороннего апи
 
-
-
-
     useEffect(() => {
+
         searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
         console.log("функция вызвалась")
     }, [search, checkboxValue, notFound, props.cards]);
@@ -61,7 +58,10 @@ function SavedMovies(props) {
                     allMovies={props.cards}
                     setNotFound={setNotFound}
                     setResultSearchMovies={setResultSearchMyMovies}
-
+                    inactiveButtonStartSearch={props.inactiveButtonStartSearch}
+                    setInactiveButtonStartSearch={props.setInactiveButtonStartSearch}
+                    errorMessageSearchForm={props.errorMessageSearchForm}
+                    setErrorMessageSearchForm={props.setErrorMessageSearchForm}
                 />
                 <MoviesCardList
                     cards={resultSearchMyMovies}

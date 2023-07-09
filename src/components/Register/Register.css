@@ -198,6 +198,7 @@
 
 .authorization-form__error_server {
     margin-top: 122px;
+
 }
 
 
@@ -214,8 +215,14 @@
 }
 
 .authorization-form__button_disabled {
-    cursor: auto;
+    cursor: default;
     background: #b5b6bb;
+
+}
+
+.authorization-form__button_disabled:hover {
+    scale: none;
+    cursor: default;
 }
 
 .authorization-form__question-conteiner {

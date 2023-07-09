@@ -6,7 +6,6 @@ import Logotip from '../Logotip/Logotip';
 
 function Header(props) {
 
-
     return (
         <>
             <header className='header'>

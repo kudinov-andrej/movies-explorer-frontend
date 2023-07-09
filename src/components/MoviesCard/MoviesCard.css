@@ -123,6 +123,17 @@
     background: url(../../images/hardDelete.svg);
 }
 
+.movies-card__hard_delete {
+    background: url(../../images/hardDelete.svg);
+}
+
+.movies-card__hard_delete:hover {
+    cursor: pointer;
+    scale: 1.5;
+}
+
+
+
 .movies-card__duration {
     margin: 0;
     padding: 0;

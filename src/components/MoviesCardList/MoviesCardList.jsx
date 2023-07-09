@@ -2,7 +2,6 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
-import { searchMovies } from '../../utils/searchMovies';
 
 function MoviesCardList(props) {
 

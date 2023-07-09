@@ -1,9 +1,7 @@
 import React from 'react';
 import './NavTab.css';
 
-
 function NavTab({ scrollToSection }) {
-
 
     return (
         <nav className='project-title__navigation'>

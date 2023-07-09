@@ -42,7 +42,6 @@ function Movies(props) {
         if (savedLocalSearch) {
             setSearch(savedLocalSearch);
         }
-
         if (savedLocalCheckboxValue) {
             setCheckboxValue(JSON.parse(savedLocalCheckboxValue));
         }
@@ -51,9 +50,7 @@ function Movies(props) {
             setResultSearchMovies(JSON.parse(savedLocalResultSearchMovies));
             setStartingSearch(true);
         }
-
     }, []);
-
 
     useEffect(() => {
         if (resultSearchMovies && resultSearchMovies.length > 0) {
@@ -61,7 +58,7 @@ function Movies(props) {
             console.log("Сохранены результаты поиска в localStorage", JSON.stringify(resultSearchMovies));
         }
     }, [resultSearchMovies]);
-   
+
     // отображение требуемого количества карточек
 
     const handleResize = () => {
@@ -106,7 +103,6 @@ function Movies(props) {
         setShowButton(newCardsToShow < resultSearchMovies.length);
     };
 
-
     return (
         <>
             <Header
@@ -129,6 +125,10 @@ function Movies(props) {
                     allMovies={allMovies}
                     setNotFound={setNotFound}
                     setResultSearchMovies={setResultSearchMovies}
+                    inactiveButtonStartSearch={props.inactiveButtonStartSearch}
+                    setInactiveButtonStartSearch={props.setInactiveButtonStartSearch}
+                    errorMessageSearchForm={props.errorMessageSearchForm}
+                    setErrorMessageSearchForm={props.setErrorMessageSearchForm}
                 />
                 <MoviesCardList
                     cards={resultSearchMovies}
