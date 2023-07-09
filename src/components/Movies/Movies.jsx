@@ -61,11 +61,7 @@ function Movies(props) {
             console.log("Сохранены результаты поиска в localStorage", JSON.stringify(resultSearchMovies));
         }
     }, [resultSearchMovies]);
-    /*
-        useEffect(() => {
-            searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
-        }, [search, checkboxValue, notFound, allMovies]);
-    */
+   
     // отображение требуемого количества карточек
 
     const handleResize = () => {
@@ -130,9 +126,6 @@ function Movies(props) {
                     search={search}
                     checkboxValue={checkboxValue}
                     setPreloader={setPreloader}
-
-                    //
-
                     allMovies={allMovies}
                     setNotFound={setNotFound}
                     setResultSearchMovies={setResultSearchMovies}

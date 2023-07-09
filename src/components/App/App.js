@@ -17,7 +17,7 @@ import api from '../Api/ApiMyMovies';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [islogin, setIslogin] = useState(true);
+  const [islogin, setIslogin] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -86,16 +86,18 @@ function App() {
   }
 
   // регистрация
+  const [errorServerMessage, setErrorServerMessage] = useState("");
 
   const registerUser = ({ name, email, password }) => {
     auth
       .register(name, email, password)
       .then((response) => {
-        // setUserData(response);
+        navigate("/signin");
         console.log(response)
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error.message);
+        setErrorServerMessage(error.message)
       })
   }
 
@@ -124,14 +126,14 @@ function App() {
     navigate("/signup")
 
   }
-
-  useEffect(() => {
-    Promise.all([api.getCurrentUser()]).then(([userData]) => {
-      setCurrentUser(userData);
-    }).catch((err) => {
-      console.error(err);
-    });
-  }, []);
+  /*
+    useEffect(() => {
+      Promise.all([api.getCurrentUser()]).then(([userData]) => {
+        setCurrentUser(userData);
+      }).catch((err) => {
+        console.error(err);
+      });
+    }, []);*/
 
   function handleUpdateUser(data) {
     api.setUserInfo(data).then((newUser) => {
@@ -157,6 +159,26 @@ function App() {
       smooth: 'easeInOutQuart'
     });
   }
+
+
+  // валидация
+  /*
+    const [formErrors, setFormErrors] = useState({});
+    const [form, setForm] = useState({
+      name: "",
+      email: "",
+      password: "",
+    });
+  
+    const handleChange = (evt) => {
+      console.log("функция вызвалась")
+      const input = evt.target;
+      setForm({
+        ...form,
+        [input.name]: input.value,
+      });
+      //  setFormErrors({ ...formErrors, name: undefined });
+    };*/
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -217,6 +239,7 @@ function App() {
             element={
               <Register
                 registerUser={registerUser}
+                errorServerMessage={errorServerMessage}
               />
             }
           />

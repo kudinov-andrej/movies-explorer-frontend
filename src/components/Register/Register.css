@@ -155,7 +155,6 @@
 .authorization-form__error {
     margin: 0;
     padding: 0;
-    margin-bottom: 122px;
     height: 30px;
     max-width: 396px;
     color: #EE3465;
@@ -197,9 +196,26 @@
     justify-content: center;
 }
 
+.authorization-form__error_server {
+    margin-top: 122px;
+}
+
+
+@media screen and (max-width: 320px) {
+    .authorization-form__error_server {
+        margin-top: 279px;
+
+    }
+}
+
 .authorization-form__button:hover {
     scale: 1.05;
     cursor: pointer;
+}
+
+.authorization-form__button_disabled {
+    cursor: auto;
+    background: #b5b6bb;
 }
 
 .authorization-form__question-conteiner {
