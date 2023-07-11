@@ -47,7 +47,7 @@ function Register(props) {
                             maxLength="30"
                             value={values.email || ''}
                             onChange={handleChange}
-                            pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+                            pattern="([A-zА-я])+([0-9\-_\+\.])*([A-zА-я0-9\-_\+\.])*@([A-zА-я])+([0-9\-_\+\.])*([A-zА-я0-9\-_\+\.])*[\.]([A-zА-я])+"
                         />
                         {errors.email && <span className="authorization-form__error">{errors.email}</span>}
                     </div>

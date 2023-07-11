@@ -22,16 +22,27 @@ function Movies(props) {
     const [errorGetAllMovies, setErrorGetAllMovies] = useState(false);
 
     const getAllMovies = () => {
-        apiAllMovies.getCards()
-            .then((allMovies) => {
-                setAllMovies(allMovies);
-                searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+        const savedAllMoviesLocal = localStorage.getItem("allMoviesLocal");
+        if (savedAllMoviesLocal) {
+            setAllMovies(JSON.parse(savedAllMoviesLocal));
+            searchMovies(JSON.parse(savedAllMoviesLocal), search, checkboxValue, setResultSearchMovies, setNotFound);
+            setTimeout(() => {
                 setPreloader(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setErrorGetAllMovies(true)
-            });
+            }, 1000);
+        } else {
+            apiAllMovies.getCards()
+                .then((allMovies) => {
+                    localStorage.setItem("allMoviesLocal", JSON.stringify(allMovies));
+                    setAllMovies(allMovies);
+                    searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+                    setPreloader(false);
+                })
+
+                .catch((err) => {
+                    console.error(err);
+                    setErrorGetAllMovies(true)
+                });
+        }
     };
 
     useEffect(() => {
@@ -55,7 +66,6 @@ function Movies(props) {
     useEffect(() => {
         if (resultSearchMovies && resultSearchMovies.length > 0) {
             localStorage.setItem("resultSearchMovies", JSON.stringify(resultSearchMovies));
-            console.log("Сохранены результаты поиска в localStorage", JSON.stringify(resultSearchMovies));
         }
     }, [resultSearchMovies]);
 

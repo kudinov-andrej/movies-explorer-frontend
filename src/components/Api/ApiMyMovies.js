@@ -62,8 +62,8 @@ class Api {
 }
 
 const api = new Api(
-    "http://localhost:3000"
-    // "https://api.diplomak.nomoreparties.sbs",
+    //"http://localhost:3000"
+    "https://api.diplomak.nomoreparties.sbs",
 )
 
 export default api

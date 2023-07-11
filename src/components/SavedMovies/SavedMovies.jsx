@@ -30,9 +30,7 @@ function SavedMovies(props) {
     // отображение фильмов со стороннего апи
 
     useEffect(() => {
-
         searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
-        console.log("функция вызвалась")
     }, [search, checkboxValue, notFound, props.cards]);
 
 

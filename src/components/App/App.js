@@ -95,13 +95,30 @@ function App() {
     auth
       .register(name, email, password)
       .then((response) => {
-        navigate("/signin");
-        console.log(response)
+        //  navigate("/signin");
+        console.log(response);
+
+        auth
+          .authorize(email, password)
+          .then((data) => {
+            setUserData({
+              email: data.email,
+              password: data.password
+            });
+            localStorage.setItem('jwt', data.token);
+            setToken(data.token);
+            setIslogin(true);
+            navigate("/movies");
+          })
+          .catch((err) => {
+            console.log(err.message);
+            setErrorServerMessage(err.message);
+          });
       })
       .catch((error) => {
         console.log(error.message);
-        setErrorServerMessage(error.message)
-      })
+        setErrorServerMessage(error.message);
+      });
   }
 
   const loginUser = ({ email, password }) => {
@@ -115,7 +132,7 @@ function App() {
         localStorage.setItem('jwt', data.token);
         setToken(data.token);
         setIslogin(true);
-        navigate("/");
+        navigate("/movies");
       })
       .catch((err) => {
         console.log(err.message);
@@ -125,9 +142,13 @@ function App() {
 
   const logOut = () => {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("allMoviesLocal");
+    localStorage.removeItem("aresultSearchMovies");
+    localStorage.removeItem("checkboxValue");
+    localStorage.removeItem("search");
     setIslogin(false);
     setToken("")
-    navigate("/signup")
+    navigate("/")
   }
 
   function handleUpdateUser(data) {

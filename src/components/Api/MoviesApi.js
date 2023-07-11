@@ -6,7 +6,6 @@ class Api {
     _getHeaders() {
         return {
             "Content-Type": "application/json",
-            // "Cache-Control": "no-cache",
         };
     }
 
