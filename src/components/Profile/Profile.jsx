@@ -1,7 +1,7 @@
 import React from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useFormWithValidation } from '../UseFormValidation/useFormValidation';
 
