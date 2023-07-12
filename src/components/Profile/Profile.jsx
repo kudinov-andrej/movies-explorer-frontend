@@ -1,14 +1,23 @@
 import React from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useFormWithValidation } from '../UseFormValidation/useFormValidation';
 
 function Profile(props) {
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const [userComparison, setUserComparison] = useState(false);
 
     const currentUser = React.useContext(CurrentUserContext);
+
+    const comparisonUser = () => {
+        if (currentUser.name !== values.name || currentUser.email !== values.email) {
+            setUserComparison(true)
+        } else {
+            setUserComparison(false)
+        }
+    }
 
     useEffect(() => {
         if (props.islogin) {
@@ -21,13 +30,26 @@ function Profile(props) {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        if (isValid) {
+        if (isValid && userComparison) {
             props.onUpdateUser(values);
+            props.setErrorServerMessage("")
+        }
+        if (!userComparison) {
+            props.setErrorServerMessage("Данные одного из полей формы должы отличаться от начальных")
         }
     }
 
+    useEffect(() => {
+        comparisonUser();
+    }, [values, userComparison]);
+
     const closePage = () => {
         props.logOut();
+        resetForm({
+            name: "",
+            email: "",
+        });
+        props.setErrorServerMessage("")
     }
 
     return (
@@ -66,12 +88,23 @@ function Profile(props) {
                         </div>
                         <span className="profile-form__error">{errors.email}</span>
                     </fieldset>
-                    <span className="profile-form__error profile-form__error_server">{props.errorServerMessage}</span>
-                    <span className="profile-form__error profile-form__error_ssuccessful">{props.ssuccessfulResponseServer}</span>
-                    <button className={`profile-form__button ${!isValid ? 'profile-form__button_disabled' : ''}`} type='submit' disabled={!isValid}>Изменить</button>
+                    <span
+                        className={`profile-form__error ${props.errorServerMessage === ""
+                            ?
+                            "profile-form__error_ssuccessful"
+                            :
+                            "profile-form__error_server"} 
+                      ${props.ssuccessfulResponseServer !== ""
+                                ?
+                                "profile-form__error_successful"
+                                :
+                                ""}`} >
+                        {props.errorServerMessage} {props.ssuccessfulResponseServer}
+                    </span>
+                    <button className={`profile-form__button ${!isValid || !userComparison ? 'profile-form__button_disabled' : ''}`} type='submit' disabled={!isValid || !userComparison}>Изменить</button>
                 </form>
                 <buttom className='profile-form__button profile-form__button_type_exit' type='button' onClick={closePage}>Выйти из акаунта</buttom>
-            </section>
+            </section >
         </>
     );
 }

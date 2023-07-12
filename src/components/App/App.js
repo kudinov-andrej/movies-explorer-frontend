@@ -118,6 +118,7 @@ function App() {
       .catch((error) => {
         console.log(error.message);
         setErrorServerMessage(error.message);
+        console.log(errorServerMessage, "пользователь существует");
       });
   }
 
@@ -161,7 +162,8 @@ function App() {
       }, 3000)
     }).catch((err) => {
       console.error(err);
-      setErrorServerMessage(err.message)
+      const errorMessage = `Произошла ошибка при сохранении данных: ${err}`;
+      setErrorServerMessage(errorMessage);
     });
   }
   // открытие модального окна
@@ -235,6 +237,7 @@ function App() {
               userData={userData}
               setErrorServerMessage={setErrorServerMessage}
               ssuccessfulResponseServer={ssuccessfulResponseServer}
+              errorServerMessage={errorServerMessage}
             />
             }
           />
