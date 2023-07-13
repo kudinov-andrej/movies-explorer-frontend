@@ -5,34 +5,31 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { searchMyMovies } from '../../utils/searchMyMovies';
-import api from '../Api/ApiMyMovies';
 
 function SavedMovies(props) {
-
-    const [resultSearchMyMovies, setResultSearchMyMovies] = useState([]);
     const [search, setSearch] = useState("");
     const [checkboxValue, setCheckboxValue] = useState(false);
-    const [startingSearch, setStartingSearch] = useState(true);
+    const [startingSearch, setStartingSearch] = useState(false);
     const [notFound, setNotFound] = useState(false);
     const [preloader, setPreloader] = useState(false);
     const [myMoviesPage, setMyMoviesPage] = useState(true);
 
     const getAllMovies = () => {
-        api.getCards()
-            .then((card) => {
-                props.setCards(card);
-                searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
+        if (props.startingSearchMyPage) {
+            searchMyMovies(props.cards, search, checkboxValue, props.setResultSearchMyMovies, setNotFound);
+            setPreloader(true);
+            setTimeout(() => {
                 setPreloader(false);
-            }).catch((err) => {
-                console.error(err);
-            });
+            }, 500)
+        } else {
+            props.setResultSearchMyMovies(props.cards)
+            setStartingSearch(false)
+            setPreloader(true);
+            setTimeout(() => {
+                setPreloader(false);
+            }, 500)
+        }
     };
-    // отображение фильмов со стороннего апи
-
-    useEffect(() => {
-        searchMyMovies(props.cards, search, checkboxValue, setResultSearchMyMovies, setNotFound);
-    }, [search, checkboxValue, notFound, props.cards]);
-
 
     return (
         <>
@@ -55,14 +52,15 @@ function SavedMovies(props) {
                     myMoviesPage={myMoviesPage}
                     allMovies={props.cards}
                     setNotFound={setNotFound}
-                    setResultSearchMovies={setResultSearchMyMovies}
+                    setResultSearchMovies={props.setResultSearchMyMovies}
                     inactiveButtonStartSearch={props.inactiveButtonStartSearch}
                     setInactiveButtonStartSearch={props.setInactiveButtonStartSearch}
                     errorMessageSearchForm={props.errorMessageSearchForm}
                     setErrorMessageSearchForm={props.setErrorMessageSearchForm}
+                    setStartingSearchMyPage={props.setStartingSearchMyPage}
                 />
                 <MoviesCardList
-                    cards={resultSearchMyMovies}
+                    cards={props.resultSearchMyMovies}
                     startingSearch={startingSearch}
                     notFound={notFound}
                     preloader={preloader}

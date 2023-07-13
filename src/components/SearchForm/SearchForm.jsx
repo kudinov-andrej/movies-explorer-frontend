@@ -5,22 +5,29 @@ import { searchMovies } from '../../utils/searchMovies';
 function SearchForm(props) {
 
 
+
     useEffect(() => {
         if (props.myMoviesPage) {
-            startSearch();
+            props.getAllMovies()
         };
-    }, []);
+    }, [props.cards]);
 
     function startSearch() {
-        props.setStartingSearch(true)
-        props.getAllMovies()
+        if (window.location.pathname === '/saved-movies') {
+            props.setStartingSearchMyPage(true)
+        }
         props.setPreloader(true)
+        props.setStartingSearch(false)
+        props.getAllMovies()
+
     }
 
     function handleSearchChange(evt) {
         props.setSearch(evt.target.value);
         searchMovies(props.allMovies, props.search, evt.target.value, props.setResultSearchMovies, props.setNotFound);
-        localStorage.setItem("search", evt.target.value);
+        if (window.location.pathname === '/movies') {
+            localStorage.setItem("search", evt.target.value);
+        }
         if (evt.target.value !== "") {
             props.setInactiveButtonStartSearch(false)
             props.setErrorMessageSearchForm("")
@@ -33,10 +40,11 @@ function SearchForm(props) {
     function handleCheckboxValueChange(evt) {
         props.setCheckboxValue(evt.target.checked)
         searchMovies(props.allMovies, props.search, evt.target.checked, props.setResultSearchMovies, props.setNotFound);
-        localStorage.setItem("checkboxValue", JSON.stringify(evt.target.checked));
+        if (window.location.pathname === '/movies') {
+            localStorage.setItem("checkboxValue", JSON.stringify(evt.target.checked));
+        }
 
     }
-
 
     function handleSubmit(evt) {
         evt.preventDefault();

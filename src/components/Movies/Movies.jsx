@@ -8,7 +8,6 @@ import apiAllMovies from '../Api/MoviesApi';
 import { searchMovies } from '../../utils/searchMovies';
 
 function Movies(props) {
-    const [resultSearchMovies, setResultSearchMovies] = useState([]);
     const [search, setSearch] = useState("");
     const [checkboxValue, setCheckboxValue] = useState(false);
     const [startingSearch, setStartingSearch] = useState(false);
@@ -16,7 +15,7 @@ function Movies(props) {
     const [notFound, setNotFound] = useState(false);
     const [preloader, setPreloader] = useState(false)
     const [myMoviesPage, setMyMoviesPage] = useState(false);
-    const [showButton, setShowButton] = useState(true);
+    const [showButton, setShowButton] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [cardsToShow, setCardsToShow] = useState(0);
     const [errorGetAllMovies, setErrorGetAllMovies] = useState(false);
@@ -25,7 +24,7 @@ function Movies(props) {
         const savedAllMoviesLocal = localStorage.getItem("allMoviesLocal");
         if (savedAllMoviesLocal) {
             setAllMovies(JSON.parse(savedAllMoviesLocal));
-            searchMovies(JSON.parse(savedAllMoviesLocal), search, checkboxValue, setResultSearchMovies, setNotFound);
+            searchMovies(JSON.parse(savedAllMoviesLocal), search, checkboxValue, props.setResultSearchMovies, setNotFound);
             setTimeout(() => {
                 setPreloader(false);
             }, 1000);
@@ -34,10 +33,9 @@ function Movies(props) {
                 .then((allMovies) => {
                     localStorage.setItem("allMoviesLocal", JSON.stringify(allMovies));
                     setAllMovies(allMovies);
-                    searchMovies(allMovies, search, checkboxValue, setResultSearchMovies, setNotFound);
+                    searchMovies(allMovies, search, checkboxValue, props.setResultSearchMovies, setNotFound);
                     setPreloader(false);
                 })
-
                 .catch((err) => {
                     console.error(err);
                     setErrorGetAllMovies(true)
@@ -58,18 +56,20 @@ function Movies(props) {
         }
 
         if (savedLocalResultSearchMovies) {
-            setResultSearchMovies(JSON.parse(savedLocalResultSearchMovies));
-            setStartingSearch(true);
+            props.setResultSearchMovies(JSON.parse(savedLocalResultSearchMovies));
+            if (JSON.parse(savedLocalResultSearchMovies).length > 0) {
+                setStartingSearch(false);
+            } else {
+                setStartingSearch(true);
+            }
         }
     }, []);
 
     useEffect(() => {
-        if (resultSearchMovies && resultSearchMovies.length > 0) {
-            localStorage.setItem("resultSearchMovies", JSON.stringify(resultSearchMovies));
+        if (props.resultSearchMovies) {
+            localStorage.setItem("resultSearchMovies", JSON.stringify(props.resultSearchMovies));
         }
-    }, [resultSearchMovies]);
-
-    // отображение требуемого количества карточек
+    }, [props.resultSearchMovies]);
 
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
@@ -84,8 +84,12 @@ function Movies(props) {
 
     useEffect(() => {
         calculateCardsToShow();
-        setShowButton(true);
-    }, [windowWidth, resultSearchMovies]);
+        if (props.resultSearchMovies.length > cardsToShow) {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }, [windowWidth, props.resultSearchMovies]);
 
     const calculateCardsToShow = () => {
         let newCardsToShow = 0;
@@ -100,7 +104,7 @@ function Movies(props) {
     };
 
     const handleShowMore = () => {
-        const remainingCards = resultSearchMovies.length - cardsToShow;
+        const remainingCards = props.resultSearchMovies.length - cardsToShow;
         let increment;
         if (windowWidth >= 769) {
             increment = 3;
@@ -108,9 +112,9 @@ function Movies(props) {
         if (windowWidth <= 768) {
             increment = 2;
         }
-        const newCardsToShow = Math.min(cardsToShow + increment, resultSearchMovies.length);
+        const newCardsToShow = Math.min(cardsToShow + increment, props.resultSearchMovies.length);
         setCardsToShow(newCardsToShow);
-        setShowButton(newCardsToShow < resultSearchMovies.length);
+        setShowButton(newCardsToShow < props.resultSearchMovies.length);
     };
 
     return (
@@ -123,7 +127,7 @@ function Movies(props) {
 
             <section className='movies'>
                 <SearchForm
-                    cards={resultSearchMovies}
+                    cards={props.resultSearchMovies}
                     getAllMovies={getAllMovies}
                     searchMovies={searchMovies}
                     setSearch={setSearch}
@@ -134,14 +138,14 @@ function Movies(props) {
                     setPreloader={setPreloader}
                     allMovies={allMovies}
                     setNotFound={setNotFound}
-                    setResultSearchMovies={setResultSearchMovies}
+                    setResultSearchMovies={props.setResultSearchMovies}
                     inactiveButtonStartSearch={props.inactiveButtonStartSearch}
                     setInactiveButtonStartSearch={props.setInactiveButtonStartSearch}
                     errorMessageSearchForm={props.errorMessageSearchForm}
                     setErrorMessageSearchForm={props.setErrorMessageSearchForm}
                 />
                 <MoviesCardList
-                    cards={resultSearchMovies}
+                    cards={props.resultSearchMovies}
                     startingSearch={startingSearch}
                     notFound={notFound}
                     preloader={preloader}

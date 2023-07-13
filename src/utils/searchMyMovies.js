@@ -10,7 +10,6 @@ export function searchMyMovies(movies, search, checkboxValue, setResultSearchMyM
     if (checkboxValue) {
         const filteredMoviesLessThan40Mins = filteredMovies.filter((card) =>
             card.duration < 40
-
         );
         if (filteredMoviesLessThan40Mins.length === 0) {
             setNotFound(true);

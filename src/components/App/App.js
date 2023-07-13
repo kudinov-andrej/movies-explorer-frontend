@@ -31,7 +31,11 @@ function App() {
   const [inactiveButtonStartSearch, setInactiveButtonStartSearch] = useState(true);
   const [errorMessageSearchForm, setErrorMessageSearchForm] = useState('Введите запрос');
   const [isOpenPopapNavBar, setIsopenPopapNavBar] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [resultSearchMyMovies, setResultSearchMyMovies] = useState([]);
+  const [startingSearchMyPage, setStartingSearchMyPage] = useState(false);
+  const savedAllMoviesLocal = localStorage.getItem('resultSearchMovies');
+  const [resultSearchMovies, setResultSearchMovies] = useState(savedAllMoviesLocal ? JSON.parse(savedAllMoviesLocal) : []);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt")
@@ -45,8 +49,9 @@ function App() {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt")
     if (jwt) {
-      Promise.all([api.getCurrentUser()]).then(([userData]) => {
+      Promise.all([api.getCurrentUser(), api.getCards()]).then(([userData, card]) => {
         setCurrentUser(userData);
+        setCards(card);
         setIslogin(true);
       })
         .catch((err) => {
@@ -144,9 +149,11 @@ function App() {
   const logOut = () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("allMoviesLocal");
-    localStorage.removeItem("aresultSearchMovies");
+    localStorage.removeItem("resultSearchMovies");
     localStorage.removeItem("checkboxValue");
     localStorage.removeItem("search");
+    setResultSearchMovies([]);
+    setResultSearchMyMovies([]);
     setIslogin(false);
     setToken("")
     navigate("/")
@@ -208,6 +215,9 @@ function App() {
               setInactiveButtonStartSearch={setInactiveButtonStartSearch}
               errorMessageSearchForm={errorMessageSearchForm}
               setErrorMessageSearchForm={setErrorMessageSearchForm}
+              resultSearchMovies={resultSearchMovies}
+              setResultSearchMovies={setResultSearchMovies}
+              setStartingSearchMyPage={setStartingSearchMyPage}
             />}
           />
           <Route path="/saved-movies"
@@ -223,6 +233,10 @@ function App() {
               setInactiveButtonStartSearch={setInactiveButtonStartSearch}
               errorMessageSearchForm={errorMessageSearchForm}
               setErrorMessageSearchForm={setErrorMessageSearchForm}
+              resultSearchMyMovies={resultSearchMyMovies}
+              setResultSearchMyMovies={setResultSearchMyMovies}
+              setStartingSearchMyPage={setStartingSearchMyPage}
+              startingSearchMyPage={startingSearchMyPage}
             />
             }
           />

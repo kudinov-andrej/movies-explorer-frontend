@@ -9,8 +9,7 @@ function MoviesCardList(props) {
         <>
             {props.preloader ? <Preloader /> : ""}
             <p className='movies__text'>
-                {props.startingSearch ? "" : "«Нужно ввести ключевое слово»"}
-                {props.startingSearch ? (props.notFound ? "«Ничего не найдено»" : "") : ""}
+                {props.startingSearch && !props.notFound ? "Нужно ввести ключевое слово" : (!props.startingSearch && props.notFound ? "Результаты не найдены" : "")}
                 {props.errorGetAllMovies ? "«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз»" : ""}
             </p>
             <div className='movies__list'>
