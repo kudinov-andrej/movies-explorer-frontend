@@ -143,6 +143,7 @@ function Movies(props) {
                     setInactiveButtonStartSearch={props.setInactiveButtonStartSearch}
                     errorMessageSearchForm={props.errorMessageSearchForm}
                     setErrorMessageSearchForm={props.setErrorMessageSearchForm}
+                    setStartingSearchMyPage={props.setStartingSearchMyPage}
                 />
                 <MoviesCardList
                     cards={props.resultSearchMovies}

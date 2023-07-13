@@ -4,8 +4,6 @@ import { searchMovies } from '../../utils/searchMovies';
 
 function SearchForm(props) {
 
-
-
     useEffect(() => {
         if (props.myMoviesPage) {
             props.getAllMovies()
@@ -13,9 +11,7 @@ function SearchForm(props) {
     }, [props.cards]);
 
     function startSearch() {
-        if (window.location.pathname === '/saved-movies') {
-            props.setStartingSearchMyPage(true)
-        }
+        props.setStartingSearchMyPage(true)
         props.setPreloader(true)
         props.setStartingSearch(false)
         props.getAllMovies()
