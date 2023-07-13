@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import { animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import './App.css';
 import Main from '../Main/Main';
@@ -36,6 +36,23 @@ function App() {
   const [startingSearchMyPage, setStartingSearchMyPage] = useState(false);
   const savedAllMoviesLocal = localStorage.getItem('resultSearchMovies');
   const [resultSearchMovies, setResultSearchMovies] = useState(savedAllMoviesLocal ? JSON.parse(savedAllMoviesLocal) : []);
+
+
+  // защита навигации на авторизацию и регистрацию для зарегистрированного пользователя
+
+  const navigateIsloginUser = () => {
+    const isLoginPage = window.location.pathname === "/signin";
+    const isSignupPage = window.location.pathname === "/signup";
+
+    if ((isLoginPage || isSignupPage) && islogin) {
+      return navigate("/");
+    }
+    return;
+  }
+
+  useEffect(() => {
+    navigateIsloginUser();
+  }, [])
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt")
