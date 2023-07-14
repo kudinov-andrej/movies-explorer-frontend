@@ -154,7 +154,6 @@
 .login-form__error {
     margin: 0;
     padding: 0;
-    margin-bottom: 185px;
     height: 30px;
     max-width: 396px;
     color: #EE3465;
@@ -167,8 +166,17 @@
 
 @media screen and (max-width: 320px) {
     .login-form__error {
-        margin-bottom: 273px;
         max-width: 260px;
+    }
+}
+
+.login-form__error_server {
+    margin-top: 185px;
+}
+
+@media screen and (max-width: 320px) {
+    .login-form__error_server {
+        margin-top: 273px;
     }
 }
 
@@ -191,6 +199,7 @@
     line-height: normal;
     transition: scale 0.3s ease;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
 }
@@ -198,6 +207,16 @@
 .login-form__button:hover {
     scale: 1.05;
     cursor: pointer;
+}
+
+.login-form__button_disabled {
+    cursor: default;
+    background: #b5b6bb;
+}
+
+.login-form__button_disabled:hover {
+    scale: none;
+    cursor: default;
 }
 
 .login-form__question-conteiner {

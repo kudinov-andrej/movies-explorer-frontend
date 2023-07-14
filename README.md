@@ -1,5 +1,9 @@
 Ссылка на макет Figma: https://drive.google.com/file/d/1GIvxlS1dHiDoZpB5uhsF9OQQIXvftaUt/view?usp=sharing
 
+Ссылка на сайт: https://diplomak.nomoreparties.sbs/saved-movies
+
+Ссылка на пулреквест: https://github.com/kudinov-andrej/movies-explorer-frontend/pull/2
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

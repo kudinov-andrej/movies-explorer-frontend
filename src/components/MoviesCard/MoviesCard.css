@@ -25,6 +25,20 @@
     }
 }
 
+.movies-card__link {
+    margin: 0;
+    padding: 0;
+    justify-self: center;
+    align-self: center;
+    text-decoration: none;
+    transition: scale 0.3s ease;
+}
+
+.movies-card__link:hover {
+    cursor: pointer;
+    scale: 1.01;
+}
+
 .movies-card__image {
     margin: 0;
     padding: 0;
@@ -108,6 +122,17 @@
 .movies-card__hard_active:hover {
     background: url(../../images/hardDelete.svg);
 }
+
+.movies-card__hard_delete {
+    background: url(../../images/hardDelete.svg);
+}
+
+.movies-card__hard_delete:hover {
+    cursor: pointer;
+    scale: 1.5;
+}
+
+
 
 .movies-card__duration {
     margin: 0;
