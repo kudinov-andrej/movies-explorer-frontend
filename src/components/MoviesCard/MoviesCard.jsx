@@ -77,7 +77,7 @@ function MoviesCard(props) {
                     onClick={handleLikeClick}
                 ></button>
             </div>
-            <p className='movies-card__duration'>{props.card.duration}</p>
+            <p className='movies-card__duration'>Продолжительность: {props.card.duration} мин.</p>
         </div>
     );
 }
