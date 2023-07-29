@@ -17,9 +17,9 @@ function AboutProject() {
                 </div>
             </div>
             <div className='promo__progress'>
-                <div className='promo__progress-beckend'>
-                    <div className='promo__progress-beckend-item' id='promo__progress-beckend-item'>1 неделя</div>
-                    <div className='promo__progress-label' for='promo__progress-beckend-item'>beck-end</div>
+                <div className='promo__progress-backend'>
+                    <div className='promo__progress-backend-item' id='promo__progress-backend-item'>1 неделя</div>
+                    <div className='promo__progress-label' for='promo__progress-backend-item'>back-end</div>
                 </div>
                 <div className='promo__progress-frontend'>
                     <div className='promo__progress-frontend-item' id='promo__progress-frontend-item'>4 недели</div>

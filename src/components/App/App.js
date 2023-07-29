@@ -37,7 +37,6 @@ function App() {
   const savedAllMoviesLocal = localStorage.getItem('resultSearchMovies');
   const [resultSearchMovies, setResultSearchMovies] = useState(savedAllMoviesLocal ? JSON.parse(savedAllMoviesLocal) : []);
 
-
   // защита навигации на авторизацию и регистрацию для зарегистрированного пользователя
 
   const navigateIsloginUser = () => {
@@ -206,6 +205,38 @@ function App() {
     });
   }
 
+
+  // закрытие модальных окон
+
+  /*
+  function closeAllPopups() {
+    setOpenPopupPlayMovies(false);
+    setIsopenPopapNavBar(false);
+  }
+
+
+  useEffect(() => {
+    if (openPopupPlayMovies || isOpenPopapNavBar) {
+      function handleEsc(evt) {
+        if (evt.key === 'Escape') {
+          closeAllPopups()
+        }
+      }
+
+      document.addEventListener('keydown', handleEsc);
+
+      return () => {
+        document.removeEventListener('keydown', handleEsc);
+      }
+    }
+  }, [openPopupPlayMovies, isOpenPopapNavBar]);
+
+  function handlePopupCloseClick(evt) {
+    if (evt.target.classList.contains('popup' && 'popap')) {
+      closeAllPopups();
+    }
+  }
+*/
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <body className="app">
@@ -235,6 +266,7 @@ function App() {
               resultSearchMovies={resultSearchMovies}
               setResultSearchMovies={setResultSearchMovies}
               setStartingSearchMyPage={setStartingSearchMyPage}
+
             />}
           />
           <Route path="/saved-movies"
@@ -254,6 +286,7 @@ function App() {
               setResultSearchMyMovies={setResultSearchMyMovies}
               setStartingSearchMyPage={setStartingSearchMyPage}
               startingSearchMyPage={startingSearchMyPage}
+
             />
             }
           />

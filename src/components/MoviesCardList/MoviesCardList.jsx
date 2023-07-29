@@ -3,6 +3,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 
+
 function MoviesCardList(props) {
 
     return (
@@ -23,7 +24,6 @@ function MoviesCardList(props) {
                         deleteMovies={props.deleteMovies}
                         myCards={props.myCards}
                         allCards={props.cards}
-
                     />
                 ))}
             </div>
