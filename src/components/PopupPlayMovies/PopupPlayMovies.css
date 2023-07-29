@@ -80,7 +80,13 @@
     background-size: cover;
     background-position: center;
     align-self: flex-end;
-    z-index: 200;
+    z-index: 20;
+    transition: scale 0.5s ease;
+}
+
+.popup__button-close:hover {
+    scale: 1.03;
+    cursor: pointer;
 }
 
 .popup__video-description {
